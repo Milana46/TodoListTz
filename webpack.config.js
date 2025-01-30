@@ -6,7 +6,7 @@ const SRC_DIRECTORY = path.join(ROOT_DIRECTORY, 'src')
 
 
 const config = {
-  entry: [path.resolve(__dirname, 'src/index.jsx')],
+  entry: [path.resolve(__dirname, 'src/index.tsx')],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -28,13 +28,13 @@ const config = {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.ts$/, exclude: /node_modules/, loader: 'ts-loader' },
+      { test: /\.tsx$/, exclude: /node_modules/, loader: 'ts-loader' },
     ]
   },
-  // devServer: {
-  //   historyApiFallback: true,
-  //   contentBase: path.join(__dirname, 'build'),
-  //   port: 8080
-  // }
+  resolve: {
+      extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json"]
+  },
 }
 
 module.exports = config

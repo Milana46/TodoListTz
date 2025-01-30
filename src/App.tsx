@@ -1,3 +1,4 @@
+import React from "react";
 
 
 function App() {
@@ -5,7 +6,6 @@ function App() {
     <div className="App">
       React
     </div>
-  
   );
 }
 
