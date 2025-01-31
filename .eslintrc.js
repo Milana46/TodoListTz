@@ -16,8 +16,13 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react/recommended"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "quotes": ["error", "double"],
+        "prefer-const": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
     }
 };
