@@ -1,12 +1,32 @@
-import React from "react";
+import React, { JSX } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Navigation} from "./components/Navigation";
+import {Home} from "./pages/Home";
+import {Settings} from "./pages/Settings";
+import { ROUTERS } from "./constants";
 
+type RouteKey = keyof typeof ROUTERS;
 
 function App() {
   return (
-    <div className="App">
-      React
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>{listOfRoutes}</Routes>
+    </Router>
   );
+}
+
+const listOfRoutes = Object.entries(ROUTERS).map(([key, path]) => (
+  <Route key={key} path={path} element={getComponentByKey(key as RouteKey)} />
+));
+
+
+function getComponentByKey(key: RouteKey): JSX.Element {
+  const components: Record<RouteKey, JSX.Element> = {
+    home: <Home />,
+    settings: <Settings />,
+  };
+  return components[key] || <div>404 Not Found</div>;
 }
 
 export default App;
