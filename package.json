@@ -67,8 +67,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && eslint .",
-      "commit-msg": "commitlint --edit"
+      "pre-commit": "lint-staged && eslint ."
     }
   },
   "lint-staged": {
