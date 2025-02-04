@@ -37,6 +37,6 @@ export default [
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    ignores: ["build/*", "webpack*"]
+    ignores: ["build/*", "webpack*", "node_modules"]
   }
 ];
