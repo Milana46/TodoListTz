@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import {Card, Avatar, CardWrapper, AvatarContainer} from "./style";
+
+import {Avatar, AvatarContainer,Card, CardWrapper} from "./style";
 
 
 interface GitCardProps{
@@ -7,7 +8,7 @@ interface GitCardProps{
     userUrl:string
 }
 
-export const GitCard: React.FC<GitCardProps> = ({ login, userUrl }) => {
+export const GitCard: FC<GitCardProps> = ({ login, userUrl }) => {
     return (
       <CardWrapper>
         <Card>

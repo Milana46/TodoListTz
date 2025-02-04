@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { TaskListContainer, TaskItem, TaskText, TaskActions, Checkbox, ButtonContainer, ButtonIcon } from "./style";
+
+import { ButtonContainer, ButtonIcon,Checkbox, TaskActions, TaskItem, TaskListContainer, TaskText } from "./style";
 
 export const TaskList:FC=()=>{
   return (

@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { SearchContainer, InputWrapper, Input, Label, SearchButton } from "./style";
+
+import { Input, InputWrapper, Label, SearchButton,SearchContainer } from "./style";
 //import search from "../../icons/search.png";
 
 interface SearchFieldProps {

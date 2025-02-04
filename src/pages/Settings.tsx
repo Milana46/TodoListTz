@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { SwitchThemes } from "../components/SwitchThemes";
-import { SearchField } from "../components/SearchField";
+
 import { GitCard } from "../components/GitCard";
+import { SearchField } from "../components/SearchField";
+import { SwitchThemes } from "../components/SwitchThemes";
 
 export const Settings: React.FC = () => {
   const [theme, setTheme] = useState("light");
-  const [query, setQuery] = useState("");
+  const [, setQuery] = useState("");
 
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { ThemeContainer, Select, Label, Option } from "./style";
+
+import { Label, Option,Select, ThemeContainer } from "./style";
 
 interface SwitchThemesProps{
   theme:string,
