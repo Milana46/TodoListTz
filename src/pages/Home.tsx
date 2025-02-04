@@ -1,25 +1,31 @@
 import React, { FC, useState } from "react";
-import {InputField} from "../components/InputField";
-import {Container} from "../styles/container";
+import { InputField } from "../components/InputField";
+import { Container } from "../styles/container";
 import { TaskListTitle } from "../components/TaskList/style";
-import {TaskList} from "../components/TaskList";
-import {TaskListWrapper} from "../components/TaskList/style";
+import { TaskList } from "../components/TaskList";
+import { TaskListWrapper } from "../components/TaskList/style";
 import { Button } from "../components/Button";
 import { ArrayListTask } from "../constants";
 
 export const Home: FC = () => {
-  const [inputValue, setInputValue] = useState<string>(""); //состояния поля ввода
-  const [todoList, setTodoList] = useState<string[]>(ArrayListTask);  //состояния списка
+  const [inputValue, setInputValue] = useState<string>(""); // Состояние поля ввода
+  const [todoList, setTodoList] = useState<string[]>(ArrayListTask); // Состояние списка
 
   function addTodo() {
-    if (inputValue !== "") {
+    if (inputValue.trim() !== "") {
       setTodoList(prevList => [...prevList, inputValue]);
       setInputValue("");
     }
   }
 
-  function removeTask(removeIndex:number){
-    setTodoList(prevList=>prevList.filter((_,index)=>index!==removeIndex));
+  function removeTask(removeIndex: number) {
+    setTodoList(prevList => prevList.filter((_, index) => index !== removeIndex));
+  }
+
+  function changeTask(oldName: string, newName: string) {
+    setTodoList(prevList =>
+      prevList.map(task => (task === oldName ? newName : task))
+    );
   }
 
   return (
@@ -31,7 +37,12 @@ export const Home: FC = () => {
       <TaskListTitle>Task list</TaskListTitle>
       <TaskListWrapper>
         {todoList.map((data, index) => (
-          <TaskList key={index} name={data} onRemove={()=>removeTask(index)}/>
+          <TaskList
+            key={index}
+            name={data}
+            onRemove={() => removeTask(index)}
+            onChange={changeTask}
+          />
         ))}
       </TaskListWrapper>
       <Button content="Deleted Selected" variant="delete" />
