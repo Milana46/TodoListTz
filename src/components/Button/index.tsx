@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import {StyledDeleteButton,StyledAddButton} from "./style";
+
+import {StyledAddButton,StyledDeleteButton} from "./style";
 interface ButtonProps{
     content: string,
     variant?: "add" | "delete",
