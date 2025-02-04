@@ -31,6 +31,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'prefer-const': 'error',
       'comma-dangle': ['error', 'always-multiline'],
+      '@typescript-eslint/no-unused-vars': ['warn'],
       ...pluginReact.configs.recommended.rules,
     },
   },
