@@ -9,7 +9,7 @@ import {
   TaskItem,
   TaskListContainer,
   TaskText,
-} from './style';
+} from './styled';
 
 export const TaskList: FC = () => {
   return (

@@ -1,15 +1,19 @@
 import React, { FC } from 'react';
 
-import { StyledAddButton, StyledDeleteButton } from './style';
+import { StyledAddButton, StyledDeleteButton } from './styled';
 interface ButtonProps {
   content: string;
   variant?: 'add' | 'delete';
   onClick?: VoidFunction;
 }
 
-export const Button: FC<ButtonProps> = ({ content, variant, onClick }) => {
-  if (variant === 'add') {
-    return <StyledAddButton onClick={onClick}>{content}</StyledAddButton>;
-  }
-  return <StyledDeleteButton onClick={onClick}>{content}</StyledDeleteButton>;
+const BUTTON_VARIANTS = {
+  add: StyledAddButton,
+  delete: StyledDeleteButton,
+};
+
+export const Button: FC<ButtonProps> = ({ content, variant = 'add', onClick }) => {
+  const ButtonComponent = BUTTON_VARIANTS[variant] || StyledAddButton;
+
+  return <ButtonComponent onClick={onClick}>{content}</ButtonComponent>;
 };

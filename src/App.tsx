@@ -26,7 +26,12 @@ function getComponentByKey(key: RouteKey): JSX.Element {
     home: <Home />,
     settings: <Settings />,
   };
-  return components[key] || <div>404 Not Found</div>;
+  return components[key] || (
+    <section>
+      <h1>404 Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+    </section>
+  );
 }
 
 export default App;

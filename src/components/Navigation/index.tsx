@@ -9,7 +9,7 @@ import {
   NavLinksDesktop,
   NavLinksMobile,
   StyledLink,
-} from './style';
+} from './styled';
 
 export const Navigation: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
