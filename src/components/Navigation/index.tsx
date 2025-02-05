@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 
-import { ROUTERS } from './../../constants';
+import { ROUTERS } from '@/constants';
 import {
   Burger,
   BurgerContainer,
