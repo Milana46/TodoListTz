@@ -6,7 +6,10 @@
     "build": "webpack",
     "test": "jest --passWithNoTests",
     "start": "webpack serve --open --mode development --config webpack.config.dev.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -14,6 +17,7 @@
       "react-app/jest"
     ]
   },
+  "prettier": "./prettier.json",
   "browserslist": {
     "production": [
       ">0.2%",
