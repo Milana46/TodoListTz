@@ -1,4 +1,4 @@
-export const ROUTERS={
-    home:"/",
-    settings:"/settings",
-}
+export const ROUTERS = {
+  home: '/',
+  settings: '/settings',
+};

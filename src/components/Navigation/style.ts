@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const NavBar = styled.nav`
   display: flex;
@@ -34,11 +34,13 @@ export const NavLinksMobile = styled.div<{ open: boolean }>`
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    max-height: ${({ open }) => (open ? "200px" : "0")};
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: ${({ open }) => (open ? '200px' : '0')};
+    transition:
+      max-height 0.3s ease-in-out,
+      padding 0.3s ease-in-out;
     background-color: #3e50b5;
     width: 100%;
-    padding: ${({ open }) => (open ? "10px 0" : "0 10px")};
+    padding: ${({ open }) => (open ? '10px 0' : '0 10px')};
     align-items: center;
   }
 `;
@@ -68,8 +70,7 @@ export const Burger = styled.div<{ open: boolean }>`
 
   span:nth-child(1) {
     top: 0;
-    transform: ${({ open }) =>
-      open ? "rotate(45deg) translate(7px, 7px)" : "rotate(0)"};
+    transform: ${({ open }) => (open ? 'rotate(45deg) translate(7px, 7px)' : 'rotate(0)')};
   }
 
   span:nth-child(2) {
@@ -79,8 +80,7 @@ export const Burger = styled.div<{ open: boolean }>`
 
   span:nth-child(3) {
     top: 20px;
-    transform: ${({ open }) =>
-      open ? "rotate(-45deg) translate(7px, -7px)" : "rotate(0)"};
+    transform: ${({ open }) => (open ? 'rotate(-45deg) translate(7px, -7px)' : 'rotate(0)')};
   }
 `;
 
@@ -92,7 +92,7 @@ export const StyledLink = styled(Link)`
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 2px;

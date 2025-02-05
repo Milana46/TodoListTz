@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledDeleteButton = styled.button`
   background-color: #ff4081;
@@ -15,7 +15,7 @@ export const StyledDeleteButton = styled.button`
 
   @media (max-width: 450px) {
     width: 90%;
-    justify-content:center;
+    justify-content: center;
     margin-left: 0;
     font-size: 18px;
     height: auto;
