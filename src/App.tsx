@@ -5,7 +5,6 @@ import {Navigation} from "./components/Navigation";
 import { ROUTERS } from "./constants";
 import {Home} from "./pages/Home";
 import {Settings} from "./pages/Settings";
-import { ROUTERS } from "./constants";
 
 type RouteKey = keyof typeof ROUTERS;
 

@@ -6,9 +6,11 @@ interface TaskListProps {
   name: string;
   onRemove: (name: string) => void;
   onChange: (oldName: string, newName: string) => void;
+  onToggle:(name:string)=>void;
+  isChecked: boolean;
 }
 
-export const TaskList: FC<TaskListProps> = ({ name, onRemove, onChange }) => {
+export const TaskList: FC<TaskListProps> = ({ name, onRemove, onChange, onToggle, isChecked }) => {
   const [isEdit, setEdit] = useState(false);
   const [newName, setNewName] = useState(name);
 
@@ -23,7 +25,7 @@ export const TaskList: FC<TaskListProps> = ({ name, onRemove, onChange }) => {
     <TaskListContainer>
       <TaskItem>
         <TaskActions>
-          <input type="checkbox" />
+          <input type="checkbox" checked={isChecked} onToggle={()=>onToggle}/>
           {isEdit ? (
             <input
               type="text"

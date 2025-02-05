@@ -7,13 +7,20 @@ import { TaskListWrapper } from "../components/TaskList/style";
 import { Button } from "../components/Button";
 import { ArrayListTask } from "../constants";
 
+interface Task {
+  name: string;
+  isChecked: boolean;
+}
+
 export const Home: FC = () => {
   const [inputValue, setInputValue] = useState<string>(""); // Состояние поля ввода
-  const [todoList, setTodoList] = useState<string[]>(ArrayListTask); // Состояние списка
+  const [todoList, setTodoList] = useState<Task[]>(
+    ArrayListTask.map(task => ({ name: task, isChecked: false }))
+  );
 
   function addTodo() {
     if (inputValue.trim() !== "") {
-      setTodoList(prevList => [...prevList, inputValue]);
+      setTodoList(prevList => [...prevList, { name: inputValue, isChecked: false }]);
       setInputValue("");
     }
   }
@@ -24,8 +31,20 @@ export const Home: FC = () => {
 
   function changeTask(oldName: string, newName: string) {
     setTodoList(prevList =>
-      prevList.map(task => (task === oldName ? newName : task))
+      prevList.map(task => (task.name === oldName ? { ...task, name: newName } : task))
     );
+  }
+
+  function toggleTask(name: string) {
+    setTodoList(prevList =>
+      prevList.map(task =>
+        task.name === name ? { ...task, isChecked: !task.isChecked } : task
+      )
+    );
+  }
+
+  function deleteCheckedTask() {
+    setTodoList(prevList => prevList.filter(task => !task.isChecked));
   }
 
   return (
@@ -39,13 +58,15 @@ export const Home: FC = () => {
         {todoList.map((data, index) => (
           <TaskList
             key={index}
-            name={data}
+            name={data.name}
+            isChecked={data.isChecked}
             onRemove={() => removeTask(index)}
             onChange={changeTask}
+            onToggle={toggleTask}
           />
         ))}
       </TaskListWrapper>
-      <Button content="Deleted Selected" variant="delete" />
+      <Button content="Delete Selected" variant="delete" onClick={deleteCheckedTask} />
     </>
   );
 };
