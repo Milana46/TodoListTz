@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const COLOR_BORDER_BOTTOM='#9b9b9b';
-const IMG_HEIGHT='29px';
-const IMG_WIDTH='28px';
-
+const COLOR_BORDER_BOTTOM = '#9b9b9b';
+const IMG_HEIGHT = '29px';
+const IMG_WIDTH = '28px';
 
 export const SearchContainer = styled.div`
   display: flex;

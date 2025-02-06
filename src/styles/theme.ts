@@ -3,7 +3,7 @@ export const baseTheme = {
     primary: '#FFFFFF',
     secondary: '#3E50B5',
     black: '#0000001A',
-    brown:'#646464',
+    brown: '#646464',
   },
   fontSize: {
     xss: '14px',
@@ -27,7 +27,7 @@ export const baseTheme = {
     xxl: '50px',
     xxxl: '70px',
     xxxxxl: '200px',
-    xxvvv:'518px',
+    xxvvv: '518px',
   },
 
   fontWeight: {
@@ -53,10 +53,10 @@ export const baseTheme = {
     s: '10px',
   },
 
-  boxShadow:{
-    xsss:'0px',
-    xss:'2px',
-    xs:'4px',
+  boxShadow: {
+    xsss: '0px',
+    xss: '2px',
+    xs: '4px',
   },
 
   width: {
@@ -64,16 +64,15 @@ export const baseTheme = {
     normal: '90%',
   },
 
-  sizeOfElement:{
-    xss:'24px',
-    xs:'30px',
-    s:'122px',
-    m:'172px',
-    l:'200px',
-    xl:'282px',
-    xxl:'500px',
-    xxxl:'600px',
-
+  sizeOfElement: {
+    xss: '24px',
+    xs: '30px',
+    s: '122px',
+    m: '172px',
+    l: '200px',
+    xl: '282px',
+    xxl: '500px',
+    xxxl: '600px',
   },
 
   lineHeight: {

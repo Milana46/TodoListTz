@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-const SELECT_WIDTH='150px';
-const SELECT_HEIGHT='40px';
-const SELECT_BACK_COLOR='#fffafa';
-const SELECT_BORDER_COLOR='#a1a1a1';
-
+const SELECT_WIDTH = '150px';
+const SELECT_HEIGHT = '40px';
+const SELECT_BACK_COLOR = '#fffafa';
+const SELECT_BORDER_COLOR = '#a1a1a1';
 
 export const ThemeContainer = styled.div`
   margin-top: ${({ theme }) => theme.margins.xll};

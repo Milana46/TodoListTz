@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const SPAN_BURGER_HEIGHT='4px';
-const AFTER_BURGER_HEIGHT='2px';
-
+const SPAN_BURGER_HEIGHT = '4px';
+const AFTER_BURGER_HEIGHT = '2px';
 
 export const NavBar = styled.nav`
   display: flex;
@@ -12,7 +11,8 @@ export const NavBar = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondary};
   padding: ${({ theme }) => `${theme.margins.s} ${theme.margins.l}`};
   color: ${({ theme }) => theme.colors.primary};
-  box-shadow: ${({ theme }) => `${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s} `} ${({ theme }) => theme.colors.black};
+  box-shadow: ${({ theme }) => `${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s} `}
+    ${({ theme }) => theme.colors.black};
 `;
 
 export const Logo = styled.h1`

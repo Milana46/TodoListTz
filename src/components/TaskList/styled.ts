@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 
-
-const TASKLIST_BACK_COLOR='#f9f9f9';
-const BUTTONICON_BACK_COLOR='#f1f1f1';
-const BUTTONICON_SIZE='40px';
-const MEDIA_BUTTONICON_SIZE='35px';
-const CHECKBOX_SIZE='20px';
-const MEDIA_CHECKBOX_SIZE='18px';
+const TASKLIST_BACK_COLOR = '#f9f9f9';
+const BUTTONICON_BACK_COLOR = '#f1f1f1';
+const BUTTONICON_SIZE = '40px';
+const MEDIA_BUTTONICON_SIZE = '35px';
+const CHECKBOX_SIZE = '20px';
+const MEDIA_CHECKBOX_SIZE = '18px';
 
 export const TaskListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.gap.xs};
   padding: ${({ theme }) => theme.margins.s};
-  max-width:  ${({ theme }) => theme.sizeOfElement.xxl};
+  max-width: ${({ theme }) => theme.sizeOfElement.xxl};
   width: ${({ theme }) => theme.width.max};
   margin: ${({ theme }) => theme.margins.xsss} auto;
 
@@ -43,7 +42,7 @@ export const TaskListWrapper = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.gap.xs};
   padding: ${({ theme }) => theme.margins.s};
-  max-width:${({ theme }) => theme.sizeOfElement.xxxl};
+  max-width: ${({ theme }) => theme.sizeOfElement.xxxl};
   margin: ${({ theme }) => theme.margins.xsss} auto;
   max-height: 400px;
   overflow-y: auto;

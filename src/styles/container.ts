@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const CONTAINER_MARGIN_LEFT='177px';
-const CONTAINER_MARGIN_TOP='60PX';
+const CONTAINER_MARGIN_LEFT = '177px';
+const CONTAINER_MARGIN_TOP = '60PX';
 
 export const Container = styled.div`
   display: flex;
