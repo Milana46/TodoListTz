@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const COLOR_BORDER_BOTTOM='#9b9b9b';
+const IMG_HEIGHT='29px';
+const IMG_WIDTH='28px';
+
+
 export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,8 +32,8 @@ export const Label = styled.label`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: ${({ theme }) => theme.border.xxs} solid #9b9b9b;
-  width: 282px;
+  border-bottom: ${({ theme }) => theme.border.xxs} solid ${COLOR_BORDER_BOTTOM};
+  width: ${({ theme }) => theme.sizeOfElement.xl};
 
   @media (${({ theme }) => theme.media.small}) {
     width: ${({ theme }) => theme.width.max};
@@ -55,12 +60,12 @@ export const SearchButton = styled.button`
   margin-left: ${({ theme }) => theme.margins.xss};
 
   img {
-    width: 28px;
-    height: 29px;
+    width: ${IMG_WIDTH};
+    height: ${IMG_HEIGHT};
 
     @media (${({ theme }) => theme.media.small}) {
-      width: 24px;
-      height: 24px;
+      width: ${({ theme }) => theme.sizeOfElement.xss};
+      height: ${({ theme }) => theme.sizeOfElement.xss};
     }
   }
 

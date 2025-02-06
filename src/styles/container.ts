@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+const CONTAINER_MARGIN_LEFT='177px';
+const CONTAINER_MARGIN_TOP='60PX';
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 177px;
-  margin-top: 60px;
+  margin-left: ${CONTAINER_MARGIN_LEFT};
+  margin-top: ${CONTAINER_MARGIN_TOP};
 
-  @media (max-width: 450px) {
-    margin-left: 10px;
+  @media (${({ theme }) => theme.media.medium}) {
+    margin-left: ${({ theme }) => theme.margins.s};
     flex-direction: column;
-    padding: 10px;
+    padding: ${({ theme }) => theme.margins.s};
   }
 `;

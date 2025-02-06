@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+const SPAN_BURGER_HEIGHT='4px';
+const AFTER_BURGER_HEIGHT='2px';
+
+
 export const NavBar = styled.nav`
   display: flex;
   align-items: center;
@@ -8,7 +12,7 @@ export const NavBar = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondary};
   padding: ${({ theme }) => `${theme.margins.s} ${theme.margins.l}`};
   color: ${({ theme }) => theme.colors.primary};
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.colors.black};
+  box-shadow: ${({ theme }) => `${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s} `} ${({ theme }) => theme.colors.black};
 `;
 
 export const Logo = styled.h1`
@@ -57,14 +61,14 @@ export const BurgerContainer = styled.div`
 `;
 
 export const Burger = styled.div<{ open: boolean }>`
-  width: 30px;
-  height: 24px;
+  width: ${({ theme }) => theme.sizeOfElement.xs};
+  height: ${({ theme }) => theme.sizeOfElement.xss};
   position: relative;
 
   span {
     display: block;
     position: absolute;
-    height: 4px;
+    height: ${SPAN_BURGER_HEIGHT};
     width: ${({ theme }) => theme.width.max};
     background: ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.borderRadius.xss};
@@ -98,7 +102,7 @@ export const StyledLink = styled(Link)`
     content: '';
     display: block;
     width: ${({ theme }) => theme.width.max};
-    height: 2px;
+    height: ${AFTER_BURGER_HEIGHT};
     background-color: white;
     position: absolute;
     bottom: -2px;

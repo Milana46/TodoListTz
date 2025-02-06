@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+const SELECT_WIDTH='150px';
+const SELECT_HEIGHT='40px';
+const SELECT_BACK_COLOR='#fffafa';
+const SELECT_BORDER_COLOR='#a1a1a1';
+
+
 export const ThemeContainer = styled.div`
   margin-top: ${({ theme }) => theme.margins.xll};
   margin-bottom: ${({ theme }) => theme.margins.s};
@@ -15,10 +21,10 @@ export const ThemeContainer = styled.div`
 `;
 
 export const Select = styled.select`
-  width: 150px;
-  height: 40px;
-  background-color: #fffafa;
-  border: 1px solid #a1a1a1;
+  width: ${SELECT_WIDTH};
+  height: ${SELECT_HEIGHT};
+  background-color: ${SELECT_BACK_COLOR};
+  border: 1px solid ${SELECT_BORDER_COLOR};
   border-radius: ${({ theme }) => theme.borderRadius.s};
   padding: ${({ theme }) => theme.margins.xss};
   font-size: ${({ theme }) => theme.fontSize.xs};
@@ -29,8 +35,8 @@ export const Select = styled.select`
 `;
 
 export const Label = styled.label`
-  width: 122px;
-  color: #646464;
+  width: ${({ theme }) => theme.sizeOfElement.s};
+  color: ${({ theme }) => theme.colors.brown};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   line-height: ${({ theme }) => theme.lineHeight.xxs};
@@ -42,7 +48,7 @@ export const Label = styled.label`
 `;
 
 export const Option = styled.option`
-  width: 172px;
+  width: ${({ theme }) => theme.sizeOfElement.m};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   line-height: ${({ theme }) => theme.lineHeight.xxs};

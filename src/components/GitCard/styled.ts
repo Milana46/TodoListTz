@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-const AVATAR_SIZE = '200px';
 const AVATAR_SIZE_SMALL = '150px';
 
 export const Card = styled.div`
@@ -29,8 +28,8 @@ export const CardWrapper = styled.div`
 
 export const AvatarContainer = styled.div`
   position: relative;
-  width: ${AVATAR_SIZE};
-  height: ${AVATAR_SIZE};
+  width: ${({ theme }) => theme.sizeOfElement.l};
+  height: ${({ theme }) => theme.sizeOfElement.l};
 
   @media (${({ theme }) => theme.media.small}) {
     width: ${AVATAR_SIZE_SMALL};

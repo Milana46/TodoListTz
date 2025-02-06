@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
+const WIDTH_INPUT='557px';
+const COLOR_INPUT='#1e3aa8';
+
 export const StyledInput = styled.input`
-  width: 557px;
+  width: ${WIDTH_INPUT};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   border: none;
@@ -11,7 +14,7 @@ export const StyledInput = styled.input`
   padding: ${({ theme }) => `${theme.margins.xss} ${theme.margins.xsss}`};
 
   &:focus {
-    border-bottom: 2px solid #1e3aa8;
+    border-bottom:${({ theme }) => theme.borderBottom.xs} solid ${COLOR_INPUT};
   }
 
   @media (${({ theme }) => theme.media.medium}) {

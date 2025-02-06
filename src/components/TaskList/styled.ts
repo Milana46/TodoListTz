@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
+
+const TASKLIST_BACK_COLOR='#f9f9f9';
+const BUTTONICON_BACK_COLOR='#f1f1f1';
+const BUTTONICON_SIZE='40px';
+const MEDIA_BUTTONICON_SIZE='35px';
+const CHECKBOX_SIZE='20px';
+const MEDIA_CHECKBOX_SIZE='18px';
+
 export const TaskListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.gap.xs};
   padding: ${({ theme }) => theme.margins.s};
-  max-width: 500px;
+  max-width:  ${({ theme }) => theme.sizeOfElement.xxl};
   width: ${({ theme }) => theme.width.max};
   margin: ${({ theme }) => theme.margins.xsss} auto;
 
@@ -16,7 +24,7 @@ export const TaskListContainer = styled.div`
 `;
 
 export const TaskListTitle = styled.text`
-  margin-left: 518px;
+  margin-left: ${({ theme }) => theme.margins.xxvvv};
   margin-top: ${({ theme }) => theme.margins.xxxxxl};
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -35,7 +43,7 @@ export const TaskListWrapper = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.gap.xs};
   padding: ${({ theme }) => theme.margins.s};
-  max-width: 600px;
+  max-width:${({ theme }) => theme.sizeOfElement.xxxl};
   margin: ${({ theme }) => theme.margins.xsss} auto;
   max-height: 400px;
   overflow-y: auto;
@@ -50,10 +58,10 @@ export const TaskItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f9f9f9;
+  background-color: ${TASKLIST_BACK_COLOR};
   padding: ${({ theme }) => theme.margins.xss};
   border-radius: ${({ theme }) => theme.borderRadius.xs};
-  box-shadow: 0 2px 4px ${({ theme }) => theme.colors.black};
+  box-shadow: box-shadow: ${({ theme }) => `${theme.boxShadow.xsss}, ${theme.boxShadow.xss}, ${theme.boxShadow.xs}`} ${({ theme }) => theme.colors.black};
   width: ${({ theme }) => theme.width.max};
 
   @media (${({ theme }) => theme.media.medium}) {
@@ -87,14 +95,14 @@ export const TaskActions = styled.div`
 `;
 
 export const Checkbox = styled.input`
-  width: 20px;
-  height: 20px;
+  width: ${CHECKBOX_SIZE};
+  height: ${CHECKBOX_SIZE};
   cursor: pointer;
   accent-color: ${({ theme }) => theme.colors.secondary};
 
   @media (${({ theme }) => theme.media.medium}) {
-    width: 18px;
-    height: 18px;
+    width: ${MEDIA_CHECKBOX_SIZE};
+    height: ${MEDIA_CHECKBOX_SIZE};
   }
 `;
 
@@ -112,9 +120,9 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: #f1f1f1;
+  width: ${BUTTONICON_SIZE};
+  height: ${BUTTONICON_SIZE};
+  background-color: ${BUTTONICON_BACK_COLOR};
   border-radius: ${({ theme }) => theme.borderRadius.xs};
   transition: background-color 0.3s ease;
 
@@ -132,7 +140,7 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
   }
 
   @media (${({ theme }) => theme.media.medium}) {
-    width: 35px;
-    height: 35px;
+    width: ${MEDIA_BUTTONICON_SIZE};
+    height: ${MEDIA_BUTTONICON_SIZE};
   }
 `;
