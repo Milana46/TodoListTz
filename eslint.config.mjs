@@ -1,20 +1,20 @@
 import eslintConfigPrettier from 'eslint-config-prettier';
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    files: ["src/**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    files: ['src/**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     plugins: {
-      'react': pluginReact,
+      react: pluginReact,
       'simple-import-sort': simpleImportSort,
     },
     settings: {
       react: {
-        version: "detect",
+        version: 'detect',
       },
     },
     languageOptions: {
@@ -31,12 +31,13 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'prefer-const': 'error',
       'comma-dangle': ['error', 'always-multiline'],
+      '@typescript-eslint/no-unused-vars': ['warn'],
       ...pluginReact.configs.recommended.rules,
     },
   },
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    ignores: ["build/*", "webpack*", "node_modules"]
-  }
+    ignores: ['build/*', 'webpack*', 'node_modules'],
+  },
 ];
