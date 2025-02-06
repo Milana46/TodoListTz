@@ -3,46 +3,46 @@ import styled from 'styled-components';
 export const TaskListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: ${({ theme }) => theme.gap.xs};
+  padding: ${({ theme }) => theme.margins.s};
   max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
+  width: ${({ theme }) => theme.width.max};
+  margin: ${({ theme }) => theme.margins.xsss} auto;
 
-  @media (max-width: 450px) {
-    padding: 5px;
-    max-width: 100%;
+  @media (${({ theme }) => theme.media.medium}) {
+    padding: ${({ theme }) => theme.margins.xss};
+    max-width: ${({ theme }) => theme.width.max};
   }
 `;
 
 export const TaskListTitle = styled.text`
   margin-left: 518px;
-  margin-top: 20px;
+  margin-top: ${({ theme }) => theme.margins.xxxxxl};
   text-align: center;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 52.02px;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  line-height: ${({ theme }) => theme.lineHeight.m};
 
-  @media (max-width: 450px) {
-    margin-left: 0;
-    font-size: 24px;
-    line-height: 32px;
+  @media (${({ theme }) => theme.media.medium}) {
+    margin-left: ${({ theme }) => theme.margins.xsss};
+    font-size: ${({ theme }) => theme.fontSize.l};
+    line-height: ${({ theme }) => theme.lineHeight.xs};
   }
 `;
 
 export const TaskListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: ${({ theme }) => theme.gap.xs};
+  padding: ${({ theme }) => theme.margins.s};
   max-width: 600px;
-  margin: 0 auto;
+  margin: ${({ theme }) => theme.margins.xsss} auto;
   max-height: 400px;
   overflow-y: auto;
 
-  @media (max-width: 450px) {
-    max-width: 100%;
-    padding: 5px;
+  @media (${({ theme }) => theme.media.medium}) {
+    max-width: ${({ theme }) => theme.width.max};
+    padding: ${({ theme }) => theme.margins.xss};
   }
 `;
 
@@ -51,12 +51,12 @@ export const TaskItem = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  padding: ${({ theme }) => theme.margins.xss};
+  border-radius: ${({ theme }) => theme.borderRadius.xs};
+  box-shadow: 0 2px 4px ${({ theme }) => theme.colors.black};
+  width: ${({ theme }) => theme.width.max};
 
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -64,24 +64,24 @@ export const TaskItem = styled.div`
 
 export const TaskText = styled.span<{ completed: boolean }>`
   flex-grow: 1;
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.s};
   text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
   color: ${(props) => (props.completed ? '#b5b5b5' : '#333')};
-  margin-left: 10px;
+  margin-left: ${({ theme }) => theme.margins.s};
 
-  @media (max-width: 450px) {
-    font-size: 16px;
-    margin-left: 0;
+  @media (${({ theme }) => theme.media.medium}) {
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    margin-left: ${({ theme }) => theme.margins.xsss};
   }
 `;
 
 export const TaskActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap.xs};
 
-  @media (max-width: 450px) {
-    width: 100%;
+  @media (${({ theme }) => theme.media.medium}) {
+    width: ${({ theme }) => theme.width.max};
     justify-content: space-between;
   }
 `;
@@ -90,9 +90,9 @@ export const Checkbox = styled.input`
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: #3e50b5;
+  accent-color: ${({ theme }) => theme.colors.secondary};
 
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     width: 18px;
     height: 18px;
   }
@@ -100,11 +100,11 @@ export const Checkbox = styled.input`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap.xs};
   cursor: pointer;
 
-  @media (max-width: 450px) {
-    gap: 5px;
+  @media (${({ theme }) => theme.media.medium}) {
+    gap: ${({ theme }) => theme.gap.xxs};
   }
 `;
 
@@ -115,23 +115,23 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
   width: 40px;
   height: 40px;
   background-color: #f1f1f1;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius.xs};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #3e50b5;
+    background-color: ${({ theme }) => theme.colors.secondary};
   }
 
   svg {
     color: ${(props) => (props.isDelete ? 'red' : '#333')};
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fontSize.m};
 
-    @media (max-width: 450px) {
-      font-size: 16px;
+    @media (${({ theme }) => theme.media.medium};) {
+      font-size: ${({ theme }) => theme.fontSize.xs};
     }
   }
 
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     width: 35px;
     height: 35px;
   }

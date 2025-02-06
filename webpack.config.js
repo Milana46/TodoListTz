@@ -27,7 +27,7 @@ const config = {
     extensions: ['.wasm', '.ts', '.tsx', '.mjs', '.cjs', '.js', '.json'],
     plugins: [
       new TsconfigPathsPlugin({
-        configFile: path.resolve(ROOT_DIRECTORY, 'tsconfig.json'),  
+        configFile: path.resolve(ROOT_DIRECTORY, 'tsconfig.json'),
       }),
     ],
   },

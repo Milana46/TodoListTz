@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const ThemeContainer = styled.div`
-  margin-top: 40px;
-  margin-bottom: 10px;
-  margin-left: 70px;
+  margin-top: ${({ theme }) => theme.margins.xll};
+  margin-bottom: ${({ theme }) => theme.margins.s};
+  margin-left: ${({ theme }) => theme.margins.xxxl};
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: ${({ theme }) => theme.gap.xxs};
 
-  @media (max-width: 390px) {
-    margin-left: 10px;
-    margin-top: 20px;
+  @media (${({ theme }) => theme.media.small}) {
+    margin-left: ${({ theme }) => theme.margins.s};
+    margin-top: ${({ theme }) => theme.margins.l};
   }
 `;
 
@@ -19,35 +19,35 @@ export const Select = styled.select`
   height: 40px;
   background-color: #fffafa;
   border: 1px solid #a1a1a1;
-  border-radius: 10px;
-  padding: 5px;
-  font-size: 16px;
+  border-radius: ${({ theme }) => theme.borderRadius.s};
+  padding: ${({ theme }) => theme.margins.xss};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 
-  @media (max-width: 390px) {
-    width: 100%;
+  @media (${({ theme }) => theme.media.small}) {
+    width: ${({ theme }) => theme.width.max};
   }
 `;
 
 export const Label = styled.label`
   width: 122px;
   color: #646464;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  line-height: ${({ theme }) => theme.lineHeight.xxs};
 
-  @media (max-width: 390px) {
+  @media (${({ theme }) => theme.media.small}) {
     width: auto;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;
 
 export const Option = styled.option`
   width: 172px;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  line-height: ${({ theme }) => theme.lineHeight.xxs};
 
-  @media (max-width: 390px) {
-    font-size: 16px;
+  @media (${({ theme }) => theme.media.small}) {
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;

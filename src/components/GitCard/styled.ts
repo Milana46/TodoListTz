@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 
+const AVATAR_SIZE = '200px';
+const AVATAR_SIZE_SMALL = '150px';
+
 export const Card = styled.div`
   display: flex;
-  border: 1px solid #ffffff;
-  padding: 10px;
-  margin-top: 10px;
+  border: ${({ theme }) => `${theme.border.xxs} solid ${theme.colors.primary}`};
+  padding: ${({ theme }) => theme.margins.s};
+  margin-top: ${({ theme }) => theme.margins.s};
   text-align: center;
-  margin-left: 70px;
+  margin-left: ${({ theme }) => theme.margins.xxxl};
 
-  @media (max-width: 390px) {
+  @media (${({ theme }) => theme.media.small}) {
     flex-direction: column;
-    margin-left: 10px;
-    padding: 5px;
+    margin-left: ${({ theme }) => theme.margins.s};
+    padding: ${({ theme }) => theme.margins.xss};
   }
 `;
 
@@ -19,25 +22,25 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: 390px) {
+  @media (${({ theme }) => theme.media.small}) {
     align-items: center;
   }
 `;
 
 export const AvatarContainer = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: ${AVATAR_SIZE};
+  height: ${AVATAR_SIZE};
 
-  @media (max-width: 390px) {
-    width: 150px;
-    height: 150px;
+  @media (${({ theme }) => theme.media.small}) {
+    width: ${AVATAR_SIZE_SMALL};
+    height: ${AVATAR_SIZE_SMALL};
   }
 `;
 
 export const Avatar = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  width: ${({ theme }) => theme.width.max};
+  height: ${({ theme }) => theme.width.max};
+  border-radius: ${({ theme }) => theme.borderRadius.s};
   object-fit: cover;
 `;

@@ -1,33 +1,24 @@
 import React, { FC } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-
-import {
-  ButtonContainer,
-  ButtonIcon,
-  Checkbox,
-  TaskActions,
-  TaskItem,
-  TaskListContainer,
-  TaskText,
-} from './styled';
+import * as S from './styled';
 
 export const TaskList: FC = () => {
   return (
-    <TaskListContainer>
-      <TaskItem>
-        <TaskActions>
-          <Checkbox type="checkbox" />
-          <TaskText completed={false}>hello</TaskText>
-        </TaskActions>
-        <ButtonContainer>
-          <ButtonIcon>
+    <S.TaskListContainer>
+      <S.TaskItem>
+        <S.TaskActions>
+          <S.Checkbox type="checkbox" />
+          <S.TaskText completed={false}>hello</S.TaskText>
+        </S.TaskActions>
+        <S.ButtonContainer>
+          <S.ButtonIcon>
             <FaEdit />
-          </ButtonIcon>
-          <ButtonIcon>
+          </S.ButtonIcon>
+          <S.ButtonIcon>
             <FaTrash />
-          </ButtonIcon>
-        </ButtonContainer>
-      </TaskItem>
-    </TaskListContainer>
+          </S.ButtonIcon>
+        </S.ButtonContainer>
+      </S.TaskItem>
+    </S.TaskListContainer>
   );
 };

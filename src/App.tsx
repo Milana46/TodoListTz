@@ -1,6 +1,7 @@
 import React, { JSX } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { baseTheme } from 'styles/theme';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import { Navigation } from './components/Navigation';
 import { ROUTERS } from './constants';
 import { Home } from './pages/Home';
@@ -10,10 +11,12 @@ type RouteKey = keyof typeof ROUTERS;
 
 function App() {
   return (
-    <Router>
-      <Navigation />
-      <Routes>{listOfRoutes}</Routes>
-    </Router>
+    <ThemeProvider theme={baseTheme}>
+      <Router>
+        <Navigation />
+        <Routes>{listOfRoutes}</Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
@@ -26,11 +29,13 @@ function getComponentByKey(key: RouteKey): JSX.Element {
     home: <Home />,
     settings: <Settings />,
   };
-  return components[key] || (
-    <section>
-      <h1>404 Not Found</h1>
-      <p>The page you are looking for does not exist.</p>
-    </section>
+  return (
+    components[key] || (
+      <section>
+        <h1>404 Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+      </section>
+    )
   );
 }
 

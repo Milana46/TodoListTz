@@ -2,32 +2,32 @@ import styled from 'styled-components';
 
 export const StyledInput = styled.input`
   width: 557px;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
   border: none;
-  border-bottom: 2px solid #3e50b5;
+  border-bottom: ${({ theme }) => `${theme.borderBottom.xs} solid ${theme.colors.secondary}`};
   outline: none;
-  margin-right: 20px;
-  padding: 5px 0;
+  margin-right: ${({ theme }) => theme.margins.m};
+  padding: ${({ theme }) => `${theme.margins.xss} ${theme.margins.xsss}`};
 
   &:focus {
     border-bottom: 2px solid #1e3aa8;
   }
 
-  @media (max-width: 450px) {
-    width: 100%;
-    font-size: 16px;
-    margin-right: 10px;
+  @media (${({ theme }) => theme.media.medium}) {
+    width: ${({ theme }) => theme.width.max};
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    margin-right: ${({ theme }) => theme.margins.s};
   }
 `;
 
 export const StyledLabel = styled.label`
-  font-size: 16px;
-  color: #3e5085;
-  margin-bottom: 8px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  color: ${({ theme }) => theme.colors.secondary};
+  margin-bottom: ${({ theme }) => theme.margins.xs};
   display: block;
 
-  @media (max-width: 450px) {
-    font-size: 14px;
+  @media (${({ theme }) => theme.media.medium};) {
+    font-size: ${({ theme }) => theme.fontSize.xss};
   }
 `;

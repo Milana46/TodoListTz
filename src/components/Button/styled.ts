@@ -1,45 +1,39 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledDeleteButton = styled.button`
-  background-color: #ff4081;
-  color: white;
-  width: 238px;
-  height: 67px;
-  margin-left: 200px;
-  margin-top: 30px;
-  border-radius: 10px;
-  font-size: 24px;
-  line-height: 34.68px;
-  font-weight: 400;
+const DELETE_BUTTON_COLOR = '#FF4081';
+const ADD_BUTTON_COLOR = '#3E50B5';
+const DELETE_BUTTON_WIDTH = '238px';
+const ADD_BUTTON_WIDTH = '199px';
+const BUTTON_HEIGHT = '67px';
+
+const buttonStyles = css`
+  color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${({ theme }) => theme.borderRadius.s};
+  height: ${BUTTON_HEIGHT};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  line-height: ${({ theme }) => theme.lineHeight.s};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
   text-align: center;
 
-  @media (max-width: 450px) {
-    width: 90%;
+  @media (${({ theme }) => theme.media.medium}) {
+    width: ${({ theme }) => theme.width.max};
     justify-content: center;
-    margin-left: 0;
-    font-size: 18px;
+    margin-left: ${({ theme }) => theme.margins.xsss};
+    font-size: ${({ theme }) => theme.fontSize.s};
     height: auto;
-    padding: 10px;
+    padding: ${({ theme }) => theme.margins.s};
   }
 `;
 
-export const StyledAddButton = styled.button`
-  background-color: #3e50b5;
-  color: white;
-  width: 199px;
-  height: 67px;
-  margin-left: 10px;
-  border-radius: 10px;
-  font-size: 24px;
-  line-height: 34.68px;
-  font-weight: 400;
-  text-align: center;
+export const StyledDeleteButton = styled.button`
+  ${buttonStyles}
+  background-color: ${DELETE_BUTTON_COLOR};
+  margin-left: 320px;
+  width: ${DELETE_BUTTON_WIDTH};
+`;
 
-  @media (max-width: 450px) {
-    width: 100%;
-    margin-left: 0;
-    font-size: 18px;
-    height: auto;
-    padding: 10px;
-  }
+export const StyledAddButton = styled.button`
+  ${buttonStyles}
+  background-color: ${ADD_BUTTON_COLOR};
+  width: ${ADD_BUTTON_WIDTH};
 `;

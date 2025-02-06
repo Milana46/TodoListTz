@@ -4,34 +4,34 @@ export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 70px;
-  margin-top: 50px;
+  margin-left: ${({ theme }) => theme.margins.xxxl};
+  margin-top: ${({ theme }) => theme.margins.xxl};
 
-  @media (max-width: 390px) {
-    margin-left: 10px;
-    margin-top: 20px;
+  @media (${({ theme }) => theme.media.small}) {
+    margin-left: ${({ theme }) => theme.margins.s};
+    margin-top: ${({ theme }) => theme.margins.l};
   }
 `;
 
 export const Label = styled.label`
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21.78px;
-  margin-bottom: 5px;
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  line-height: ${({ theme }) => theme.lineHeight.xxs};
+  margin-bottom: ${({ theme }) => theme.margins.xsx};
 
-  @media (max-width: 390px) {
-    font-size: 16px;
+  @media (${({ theme }) => theme.media.small}) {
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #9b9b9b;
+  border-bottom: ${({ theme }) => theme.border.xxs} solid #9b9b9b;
   width: 282px;
 
-  @media (max-width: 390px) {
-    width: 100%;
+  @media (${({ theme }) => theme.media.small}) {
+    width: ${({ theme }) => theme.width.max};
   }
 `;
 
@@ -39,11 +39,11 @@ export const Input = styled.input`
   flex: 1;
   border: none;
   outline: none;
-  padding: 5px;
-  font-size: 16px;
+  padding: ${({ theme }) => theme.margins.xss};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 
-  @media (max-width: 390px) {
-    font-size: 14px;
+  @media (${({ theme }) => theme.media.small}) {
+    font-size: ${({ theme }) => theme.fontSize.xss};
   }
 `;
 
@@ -51,20 +51,20 @@ export const SearchButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  margin-left: 5px;
+  font-size: ${({ theme }) => theme.fontSize.s};
+  margin-left: ${({ theme }) => theme.margins.xss};
 
   img {
     width: 28px;
     height: 29px;
 
-    @media (max-width: 390px) {
+    @media (${({ theme }) => theme.media.small}) {
       width: 24px;
       height: 24px;
     }
   }
 
-  @media (max-width: 390px) {
-    font-size: 16px;
+  @media (${({ theme }) => theme.media.small}) {
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;

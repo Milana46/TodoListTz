@@ -1,43 +1,35 @@
 import React, { FC, useState } from 'react';
 
 import { ROUTERS } from '@/constants';
-import {
-  Burger,
-  BurgerContainer,
-  Logo,
-  NavBar,
-  NavLinksDesktop,
-  NavLinksMobile,
-  StyledLink,
-} from './styled';
+import * as S from './styled';
 
 export const Navigation: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <NavBar>
-        <Logo>Modsen Todo list</Logo>
-        <BurgerContainer onClick={() => setMenuOpen((prev) => !prev)}>
-          <Burger open={menuOpen}>
+      <S.NavBar>
+        <S.Logo>Modsen Todo list</S.Logo>
+        <S.BurgerContainer onClick={() => setMenuOpen((prev) => !prev)}>
+          <S.Burger open={menuOpen}>
             <span />
             <span />
             <span />
-          </Burger>
-        </BurgerContainer>
-        <NavLinksDesktop>
-          <StyledLink to={ROUTERS.home}>Home</StyledLink>
-          <StyledLink to={ROUTERS.settings}>Settings</StyledLink>
-        </NavLinksDesktop>
-      </NavBar>
-      <NavLinksMobile open={menuOpen}>
-        <StyledLink to={ROUTERS.home} onClick={() => setMenuOpen(false)}>
+          </S.Burger>
+        </S.BurgerContainer>
+        <S.NavLinksDesktop>
+          <S.StyledLink to={ROUTERS.home}>Home</S.StyledLink>
+          <S.StyledLink to={ROUTERS.settings}>Settings</S.StyledLink>
+        </S.NavLinksDesktop>
+      </S.NavBar>
+      <S.NavLinksMobile open={menuOpen}>
+        <S.StyledLink to={ROUTERS.home} onClick={() => setMenuOpen(false)}>
           Home
-        </StyledLink>
-        <StyledLink to={ROUTERS.settings} onClick={() => setMenuOpen(false)}>
+        </S.StyledLink>
+        <S.StyledLink to={ROUTERS.settings} onClick={() => setMenuOpen(false)}>
           Settings
-        </StyledLink>
-      </NavLinksMobile>
+        </S.StyledLink>
+      </S.NavLinksMobile>
     </>
   );
 };

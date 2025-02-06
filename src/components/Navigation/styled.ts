@@ -5,24 +5,24 @@ export const NavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #3e50b5;
-  padding: 10px 20px;
-  color: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: ${({ theme }) => theme.colors.secondary};
+  padding: ${({ theme }) => `${theme.margins.s} ${theme.margins.l}`};
+  color: ${({ theme }) => theme.colors.primary};
+  box-shadow: 0px 2px 4px ${({ theme }) => theme.colors.black};
 `;
 
 export const Logo = styled.h1`
-  font-size: 36px;
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   font-weight: bold;
-  margin: 0;
-  line-height: 52.02px;
+  margin: ${({ theme }) => theme.margins.xsss};
+  line-height: ${({ theme }) => theme.lineHeight.m};
 `;
 
 export const NavLinksDesktop = styled.div`
   display: flex;
-  gap: 20px;
+  gap: ${({ theme }) => theme.gap.s};
 
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     display: none;
   }
 `;
@@ -30,7 +30,7 @@ export const NavLinksDesktop = styled.div`
 export const NavLinksMobile = styled.div<{ open: boolean }>`
   display: none;
 
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -38,16 +38,19 @@ export const NavLinksMobile = styled.div<{ open: boolean }>`
     transition:
       max-height 0.3s ease-in-out,
       padding 0.3s ease-in-out;
-    background-color: #3e50b5;
-    width: 100%;
-    padding: ${({ open }) => (open ? '10px 0' : '0 10px')};
+    background-color: ${({ theme }) => theme.colors.secondary};
+    width: ${({ theme }) => theme.width.max};
+    padding: ${({ open, theme }) =>
+      open
+        ? `${theme.margins.s} ${theme.margins.xsss}`
+        : `${theme.margins.s} ${theme.margins.xsss}`};
     align-items: center;
   }
 `;
 
 export const BurgerContainer = styled.div`
   display: none;
-  @media (max-width: 450px) {
+  @media (${({ theme }) => theme.media.medium}) {
     display: block;
     cursor: pointer;
   }
@@ -62,44 +65,44 @@ export const Burger = styled.div<{ open: boolean }>`
     display: block;
     position: absolute;
     height: 4px;
-    width: 100%;
-    background: white;
-    border-radius: 2px;
+    width: ${({ theme }) => theme.width.max};
+    background: ${({ theme }) => theme.colors.primary};
+    border-radius: ${({ theme }) => theme.borderRadius.xss};
     transition: 0.3s ease-in-out;
   }
 
   span:nth-child(1) {
-    top: 0;
+    top: ${({ theme }) => theme.margins.xsss};
     transform: ${({ open }) => (open ? 'rotate(45deg) translate(7px, 7px)' : 'rotate(0)')};
   }
 
   span:nth-child(2) {
-    top: 10px;
+    top: ${({ theme }) => theme.margins.s};
     opacity: ${({ open }) => (open ? 0 : 1)};
   }
 
   span:nth-child(3) {
-    top: 20px;
+    top: ${({ theme }) => theme.margins.l};
     transform: ${({ open }) => (open ? 'rotate(-45deg) translate(7px, -7px)' : 'rotate(0)')};
   }
 `;
 
 export const StyledLink = styled(Link)`
-  color: white;
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
-  font-size: 36px;
-  line-height: 52.02px;
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  line-height: ${({ theme }) => theme.lineHeight.m};
   position: relative;
 
   &::after {
     content: '';
     display: block;
-    width: 100%;
+    width: ${({ theme }) => theme.width.max};
     height: 2px;
     background-color: white;
     position: absolute;
     bottom: -2px;
-    left: 0;
+    left: ${({ theme }) => theme.margins.xsss};
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
   }
@@ -108,8 +111,8 @@ export const StyledLink = styled(Link)`
     transform: scaleX(1);
   }
 
-  @media (max-width: 450px) {
-    font-size: 24px;
-    line-height: 32px;
+  @media (${({ theme }) => theme.media.medium}) {
+    font-size: ${({ theme }) => theme.fontSize.l};
+    line-height: ${({ theme }) => theme.lineHeight.xs};
   }
 `;
