@@ -1,9 +1,5 @@
 import styled, { css } from 'styled-components';
 
-const DELETE_BUTTON_COLOR = '#FF4081';
-const ADD_BUTTON_COLOR = '#3E50B5';
-const DELETE_BUTTON_WIDTH = '238px';
-const ADD_BUTTON_WIDTH = '199px';
 const BUTTON_HEIGHT = '67px';
 
 const buttonStyles = css`
@@ -25,15 +21,27 @@ const buttonStyles = css`
   }
 `;
 
-export const StyledDeleteButton = styled.button`
-  ${buttonStyles}
-  background-color: ${DELETE_BUTTON_COLOR};
-  margin-left: 320px;
-  width: ${DELETE_BUTTON_WIDTH};
-`;
+interface StyledButtonProps {
+  variant: 'add' | 'delete';
+}
 
-export const StyledAddButton = styled.button`
+export const StyledButton = styled.button<StyledButtonProps>`
   ${buttonStyles}
-  background-color: ${ADD_BUTTON_COLOR};
-  width: ${ADD_BUTTON_WIDTH};
+  background-color: ${({ variant }) => (variant === 'delete' ? '#FF4081' : '#3E50B5')};
+  margin-left: ${({ variant }) => (variant === 'delete' ? '330px' : '0')};
+  width: ${({ variant }) => (variant === 'delete' ? '238px' : '199px')};
+
+  @media (${({ theme }) => theme.media.medium}) {
+    ${({ variant }) =>
+      variant === 'add' &&
+      css`
+        margin-top: ${({ theme }) => theme.margins.xxl};
+      `}
+
+    ${({ variant }) =>
+      variant === 'delete' &&
+      css`
+        margin-top: ${({ theme }) => theme.margins.l};
+      `}
+  }
 `;

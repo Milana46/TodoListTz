@@ -5,6 +5,11 @@ export const baseTheme = {
     black: '#0000001A',
     brown: '#646464',
   },
+
+  fontFamily: {
+    primary: 'Jost',
+  },
+
   fontSize: {
     xss: '14px',
     xs: '16px',

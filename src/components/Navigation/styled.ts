@@ -13,10 +13,12 @@ export const NavBar = styled.nav`
   color: ${({ theme }) => theme.colors.primary};
   box-shadow: ${({ theme }) => `${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s} `}
     ${({ theme }) => theme.colors.black};
+  position: relative;
+  z-index: 1001;
 `;
 
 export const Logo = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: bold;
   margin: ${({ theme }) => theme.margins.xsss};
   line-height: ${({ theme }) => theme.lineHeight.m};
@@ -28,6 +30,7 @@ export const NavLinksDesktop = styled.div`
 
   @media (${({ theme }) => theme.media.medium}) {
     display: none;
+    font-size: ${({ theme }) => theme.fontSize.s};
   }
 `;
 
@@ -37,18 +40,20 @@ export const NavLinksMobile = styled.div<{ open: boolean }>`
   @media (${({ theme }) => theme.media.medium}) {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    max-height: ${({ open }) => (open ? '200px' : '0')};
-    transition:
-      max-height 0.3s ease-in-out,
-      padding 0.3s ease-in-out;
-    background-color: ${({ theme }) => theme.colors.secondary};
-    width: ${({ theme }) => theme.width.max};
-    padding: ${({ open, theme }) =>
-      open
-        ? `${theme.margins.s} ${theme.margins.xsss}`
-        : `${theme.margins.s} ${theme.margins.xsss}`};
     align-items: center;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    width: 100%;
+    padding: ${({ theme }) => theme.margins.s};
+
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    box-shadow: ${({ theme }) => theme.boxShadow.s} ${({ theme }) => theme.colors.black};
+    transition: transform 0.3s ease-in-out;
+    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   }
 `;
 
@@ -94,7 +99,7 @@ export const Burger = styled.div<{ open: boolean }>`
 export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   line-height: ${({ theme }) => theme.lineHeight.m};
   position: relative;
 
@@ -116,7 +121,7 @@ export const StyledLink = styled(Link)`
   }
 
   @media (${({ theme }) => theme.media.medium}) {
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: ${({ theme }) => theme.fontSize.m};
     line-height: ${({ theme }) => theme.lineHeight.xs};
   }
 `;

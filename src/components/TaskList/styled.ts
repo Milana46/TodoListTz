@@ -14,7 +14,7 @@ export const TaskListContainer = styled.div`
   padding: ${({ theme }) => theme.margins.s};
   max-width: ${({ theme }) => theme.sizeOfElement.xxl};
   width: ${({ theme }) => theme.width.max};
-  margin: ${({ theme }) => theme.margins.xsss} auto;
+  margin: 0 auto;
 
   @media (${({ theme }) => theme.media.medium}) {
     padding: ${({ theme }) => theme.margins.xss};
@@ -22,16 +22,16 @@ export const TaskListContainer = styled.div`
   }
 `;
 
-export const TaskListTitle = styled.text`
-  margin-left: ${({ theme }) => theme.margins.xxvvv};
-  margin-top: ${({ theme }) => theme.margins.xxxxxl};
+export const TaskListTitle = styled.h2`
+  margin-top: ${({ theme }) => theme.margins.xxl};
   text-align: center;
+  width: 100%;
   font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   line-height: ${({ theme }) => theme.lineHeight.m};
 
   @media (${({ theme }) => theme.media.medium}) {
-    margin-left: ${({ theme }) => theme.margins.xsss};
+    margin-top: ${({ theme }) => theme.margins.xxl};
     font-size: ${({ theme }) => theme.fontSize.l};
     line-height: ${({ theme }) => theme.lineHeight.xs};
   }
@@ -43,7 +43,7 @@ export const TaskListWrapper = styled.div`
   gap: ${({ theme }) => theme.gap.xs};
   padding: ${({ theme }) => theme.margins.s};
   max-width: ${({ theme }) => theme.sizeOfElement.xxxl};
-  margin: ${({ theme }) => theme.margins.xsss} auto;
+  margin: 0 auto;
   max-height: 400px;
   overflow-y: auto;
 
@@ -60,7 +60,8 @@ export const TaskItem = styled.div`
   background-color: ${TASKLIST_BACK_COLOR};
   padding: ${({ theme }) => theme.margins.xss};
   border-radius: ${({ theme }) => theme.borderRadius.xs};
-  box-shadow: box-shadow: ${({ theme }) => `${theme.boxShadow.xsss}, ${theme.boxShadow.xss}, ${theme.boxShadow.xs}`} ${({ theme }) => theme.colors.black};
+  box-shadow: ${({ theme }) =>
+    `${theme.boxShadow.xsss} ${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.colors.black}`};
   width: ${({ theme }) => theme.width.max};
 
   @media (${({ theme }) => theme.media.medium}) {
@@ -133,7 +134,7 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
     color: ${(props) => (props.isDelete ? 'red' : '#333')};
     font-size: ${({ theme }) => theme.fontSize.m};
 
-    @media (${({ theme }) => theme.media.medium};) {
+    @media (${({ theme }) => theme.media.medium}) {
       font-size: ${({ theme }) => theme.fontSize.xs};
     }
   }

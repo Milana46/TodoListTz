@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
-
-import { ROUTERS } from '@/constants';
+import { ROUTERS } from '@/public/constants';
 import * as S from './styled';
 
 export const Navigation: FC = () => {
