@@ -1,12 +1,19 @@
-import React, { FC, useState } from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { TaskListContainer, TaskItem, TaskActions, TaskText, ButtonContainer, ButtonIcon } from "./style";
+import React, { FC, useState } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import {
+  TaskListContainer,
+  TaskItem,
+  TaskActions,
+  TaskText,
+  ButtonContainer,
+  ButtonIcon,
+} from './style';
 
 interface TaskListProps {
   name: string;
   onRemove: (name: string) => void;
   onChange: (oldName: string, newName: string) => void;
-  onToggle:(name:string)=>void;
+  onToggle: (name: string) => void;
   isChecked: boolean;
 }
 
@@ -15,7 +22,7 @@ export const TaskList: FC<TaskListProps> = ({ name, onRemove, onChange, onToggle
   const [newName, setNewName] = useState(name);
 
   function saveName() {
-    if (newName.trim() !== "" && newName !== name) {
+    if (newName.trim() !== '' && newName !== name) {
       onChange(name, newName);
     }
     setEdit(false);
@@ -25,7 +32,7 @@ export const TaskList: FC<TaskListProps> = ({ name, onRemove, onChange, onToggle
     <TaskListContainer>
       <TaskItem>
         <TaskActions>
-          <input type="checkbox" checked={isChecked} onToggle={()=>onToggle}/>
+          <input type="checkbox" checked={isChecked} onChange={() => onToggle(name)} />
           {isEdit ? (
             <input
               type="text"

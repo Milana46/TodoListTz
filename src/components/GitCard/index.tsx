@@ -1,22 +1,23 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import {Avatar, AvatarContainer,Card, CardWrapper} from "./style";
+import { Avatar, AvatarContainer, Card, CardWrapper } from './style';
 
-
-interface GitCardProps{
-    login:string,
-    userUrl:string
+interface GitCardProps {
+  login: string;
+  userUrl: string;
 }
 
 export const GitCard: FC<GitCardProps> = ({ login, userUrl }) => {
-    return (
-      <CardWrapper>
-        <Card>
-          <AvatarContainer>
-            <p><strong>Login:</strong> {login}</p>
-            <Avatar src={userUrl} alt="GitHub Avatar" />
-          </AvatarContainer>
-        </Card>
-      </CardWrapper>
-    );
-  };
+  return (
+    <CardWrapper>
+      <Card>
+        <AvatarContainer>
+          <p>
+            <strong>Login:</strong> {login}
+          </p>
+          <Avatar src={userUrl} alt="GitHub Avatar" />
+        </AvatarContainer>
+      </Card>
+    </CardWrapper>
+  );
+};

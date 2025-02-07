@@ -1,6 +1,6 @@
-export const ROUTERS={
-    home:"/",
-    settings:"/settings",
-}
+export const ROUTERS = {
+  home: '/',
+  settings: '/settings',
+};
 
-export const ArrayListTask:string[]=["first","second"];
+export const ArrayListTask: string[] = ['first', 'second'];

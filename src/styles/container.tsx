@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
-  margin-left: 177px; 
+  margin-left: 177px;
   margin-top: 60px;
 
   @media (max-width: 450px) {

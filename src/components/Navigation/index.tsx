@@ -1,7 +1,15 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 
-import { ROUTERS } from "./../../constants";
-import { Burger, BurgerContainer, Logo, NavBar, NavLinksDesktop, NavLinksMobile, StyledLink } from "./style";
+import { ROUTERS } from './../../constants';
+import {
+  Burger,
+  BurgerContainer,
+  Logo,
+  NavBar,
+  NavLinksDesktop,
+  NavLinksMobile,
+  StyledLink,
+} from './style';
 
 export const Navigation: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);

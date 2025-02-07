@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TaskListContainer = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ export const TaskListContainer = styled.div`
   gap: 10px;
   padding: 10px;
   max-width: 500px;
-  width: 100%; 
+  width: 100%;
   margin: 0 auto;
 
   @media (max-width: 450px) {
@@ -37,8 +37,8 @@ export const TaskListWrapper = styled.div`
   padding: 10px;
   max-width: 600px;
   margin: 0 auto;
-  max-height: 400px; 
-  overflow-y: auto; 
+  max-height: 400px;
+  overflow-y: auto;
 
   @media (max-width: 450px) {
     max-width: 100%;
@@ -65,8 +65,8 @@ export const TaskItem = styled.div`
 export const TaskText = styled.span<{ completed: boolean }>`
   flex-grow: 1;
   font-size: 18px;
-  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-  color: ${(props) => (props.completed ? "#b5b5b5" : "#333")};
+  text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
+  color: ${(props) => (props.completed ? '#b5b5b5' : '#333')};
   margin-left: 10px;
 
   @media (max-width: 450px) {
@@ -112,18 +112,18 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; 
+  width: 40px;
   height: 40px;
   background-color: #f1f1f1;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  
+
   &:hover {
     background-color: #3e50b5;
   }
 
   svg {
-    color: ${(props) => (props.isDelete ? "red" : "#333")};
+    color: ${(props) => (props.isDelete ? 'red' : '#333')};
     font-size: 20px;
 
     @media (max-width: 450px) {

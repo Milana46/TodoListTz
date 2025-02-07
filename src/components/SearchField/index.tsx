@@ -1,14 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 
-import { Input, InputWrapper, Label, SearchButton,SearchContainer } from "./style";
+import { Input, InputWrapper, Label, SearchButton, SearchContainer } from './style';
 //import search from "../../icons/search.png";
 
 interface SearchFieldProps {
-    onSearch: (username: string) => void;
+  onSearch: (username: string) => void;
 }
 
 export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   const handleSearch = () => {
     if (query.trim()) {

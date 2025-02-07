@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ThemeContainer = styled.div`
   margin-top: 40px;
@@ -11,22 +11,22 @@ export const ThemeContainer = styled.div`
   @media (max-width: 390px) {
     margin-left: 10px;
     margin-top: 20px;
-  }`
-;
+  }
+`;
 
 export const Select = styled.select`
   width: 150px;
   height: 40px;
-  background-color: #FFFAFA;
-  border: 1px solid #A1A1A1;
-  border-radius: 10px; 
+  background-color: #fffafa;
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
   padding: 5px;
   font-size: 16px;
 
   @media (max-width: 390px) {
     width: 100%;
-  }`
-;
+  }
+`;
 
 export const Label = styled.label`
   width: 122px;
@@ -38,8 +38,8 @@ export const Label = styled.label`
   @media (max-width: 390px) {
     width: auto;
     font-size: 16px;
-  }`
-;
+  }
+`;
 
 export const Option = styled.option`
   width: 172px;
@@ -49,5 +49,5 @@ export const Option = styled.option`
 
   @media (max-width: 390px) {
     font-size: 16px;
-  }`
-;
+  }
+`;

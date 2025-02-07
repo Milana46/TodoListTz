@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import {StyledInput, StyledLabel} from "./style";
+import { StyledInput, StyledLabel } from './style';
 
 interface InputFieldProps {
   inputValue: string;
