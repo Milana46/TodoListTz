@@ -30,6 +30,9 @@ export const Home: FC = () => {
       setTodoList((prevList) => [...prevList, { name: inputValue, isChecked: false }]);
       setInputValue('');
     }
+    else{
+      throw new Error("Empty field, please, enter your task!");
+    }
   }
 
   function removeTask(removeIndex: number) {

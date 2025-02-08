@@ -5,15 +5,18 @@ import { Navigation } from './components/Navigation';
 import { ROUTERS } from './constants';
 import { Home } from './pages/Home';
 import { Settings } from './pages/Settings';
+import { ErrorBoundary } from './error/Error';
 
 type RouteKey = keyof typeof ROUTERS;
 
 function App() {
   return (
+    <ErrorBoundary>
     <Router>
       <Navigation />
       <Routes>{listOfRoutes}</Routes>
     </Router>
+    </ErrorBoundary>
   );
 }
 
