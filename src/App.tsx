@@ -12,10 +12,10 @@ type RouteKey = keyof typeof ROUTERS;
 function App() {
   return (
     <ErrorBoundary>
-    <Router>
-      <Navigation />
-      <Routes>{listOfRoutes}</Routes>
-    </Router>
+      <Router>
+        <Navigation />
+        <Routes>{listOfRoutes}</Routes>
+      </Router>
     </ErrorBoundary>
   );
 }
