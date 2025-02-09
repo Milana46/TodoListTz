@@ -21,28 +21,31 @@ export const Home: FC = () => {
       : ArrayListTask.map((task) => ({ name: task, isChecked: false }));
   });
 
+  const [editingTask, setEditingTask] = useState<string | null>(null);
+
   useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todoList));
   }, [todoList]);
 
-  function addTodo() {
-    if (inputValue.trim() !== '') {
+  function addOrEditTodo() {
+    if (inputValue.trim() === '') {
+      throw new Error('Empty field, please, enter your task!');
+    }
+
+    if (editingTask) {
+      setTodoList((prevList) =>
+        prevList.map((task) => (task.name === editingTask ? { ...task, name: inputValue } : task))
+      );
+      setEditingTask(null);
+    } else {
       setTodoList((prevList) => [...prevList, { name: inputValue, isChecked: false }]);
-      setInputValue('');
     }
-    else{
-      throw new Error("Empty field, please, enter your task!");
-    }
+
+    setInputValue('');
   }
 
   function removeTask(removeIndex: number) {
     setTodoList((prevList) => prevList.filter((_, index) => index !== removeIndex));
-  }
-
-  function changeTask(oldName: string, newName: string) {
-    setTodoList((prevList) =>
-      prevList.map((task) => (task.name === oldName ? { ...task, name: newName } : task))
-    );
   }
 
   function toggleTask(name: string) {
@@ -55,11 +58,16 @@ export const Home: FC = () => {
     setTodoList((prevList) => prevList.filter((task) => !task.isChecked));
   }
 
+  function startEditingTask(name: string) {
+    setInputValue(name);
+    setEditingTask(name);
+  }
+
   return (
     <>
       <Container>
         <InputField inputValue={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-        <Button content="Add todo" variant="add" onClick={addTodo} />
+        <Button content={editingTask ? 'Edit' : 'Add todo'} variant="add" onClick={addOrEditTodo} />
       </Container>
       <TaskListTitle>Task list</TaskListTitle>
       <TaskListWrapper>
@@ -69,12 +77,14 @@ export const Home: FC = () => {
             name={data.name}
             isChecked={data.isChecked}
             onRemove={() => removeTask(index)}
-            onChange={changeTask}
+            onChange={startEditingTask}
             onToggle={() => toggleTask(data.name)}
           />
         ))}
       </TaskListWrapper>
-      <Button content="Delete Selected" variant="delete" onClick={deleteCheckedTask} />
+      {todoList.length > 0 && (
+        <Button content="Delete Selected" variant="delete" onClick={deleteCheckedTask} />
+      )}
     </>
   );
 };
