@@ -1,7 +1,5 @@
 import React, { FC, useState } from 'react';
-
 import { Input, InputWrapper, Label, SearchButton, SearchContainer } from './style';
-//import search from "../../icons/search.png";
 
 interface SearchFieldProps {
   onSearch: (username: string) => void;
@@ -24,9 +22,9 @@ export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
           type="text"
           placeholder="Search name..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)} 
         />
-        <SearchButton onClick={handleSearch}></SearchButton>
+        <SearchButton onClick={handleSearch}>Search</SearchButton>
       </InputWrapper>
     </SearchContainer>
   );
