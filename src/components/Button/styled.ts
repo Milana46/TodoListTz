@@ -1,47 +1,55 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const BUTTON_HEIGHT = '67px';
+const BUTTON_DELETE_BACK_COLOR = '#FF4081';
+const BUTTON_ADD_BACK_COLOR = '#3E50B5';
 
-const buttonStyles = css`
-  color: ${({ theme }) => theme.colors.primary};
-  border-radius: ${({ theme }) => theme.borderRadius.s};
+const VARIANT_ADD = 'add';
+const VARIANT_DELETE = 'delete';
+
+const getButtonStyles = (theme: any) => `
+  color: ${theme.colors.primary};
+  border-radius: ${theme.borderRadius.s};
   height: ${BUTTON_HEIGHT};
-  font-size: ${({ theme }) => theme.fontSize.l};
-  line-height: ${({ theme }) => theme.lineHeight.s};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  font-size: ${theme.fontSize.l};
+  line-height: ${theme.lineHeight.s};
+  font-weight: ${theme.fontWeight.normal};
   text-align: center;
 
-  @media (${({ theme }) => theme.media.medium}) {
-    width: ${({ theme }) => theme.width.max};
+  @media (${theme.media.medium}) {
+    width: ${theme.width.max};
     justify-content: center;
-    margin-left: ${({ theme }) => theme.margins.xsss};
-    font-size: ${({ theme }) => theme.fontSize.s};
+    margin-left: ${theme.margins.xsss};
+    font-size: ${theme.fontSize.s};
     height: auto;
-    padding: ${({ theme }) => theme.margins.s};
+    padding: ${theme.margins.s};
   }
 `;
 
 interface StyledButtonProps {
-  variant: 'add' | 'delete';
+  variant: typeof VARIANT_ADD | typeof VARIANT_DELETE;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
-  ${buttonStyles}
-  background-color: ${({ variant }) => (variant === 'delete' ? '#FF4081' : '#3E50B5')};
-  margin-left: ${({ variant }) => (variant === 'delete' ? '330px' : '0')};
-  width: ${({ variant }) => (variant === 'delete' ? '238px' : '199px')};
+  ${({ theme }) => getButtonStyles(theme)}
+  background-color: ${({ variant }) =>
+    variant === VARIANT_DELETE ? BUTTON_DELETE_BACK_COLOR : BUTTON_ADD_BACK_COLOR};
+  margin-left: ${({ variant, theme }) =>
+    variant === VARIANT_DELETE ? theme.margins.xxxxxxl : theme.margins.xsss};
+  width: ${({ variant, theme }) =>
+    variant === VARIANT_DELETE ? theme.width.midle : theme.width.xsmidle};
 
   @media (${({ theme }) => theme.media.medium}) {
-    ${({ variant }) =>
-      variant === 'add' &&
-      css`
-        margin-top: ${({ theme }) => theme.margins.xxl};
+    ${({ variant, theme }) =>
+      variant === VARIANT_ADD &&
+      `
+        margin-top: ${theme.margins.xxl};
       `}
 
-    ${({ variant }) =>
-      variant === 'delete' &&
-      css`
-        margin-top: ${({ theme }) => theme.margins.l};
+    ${({ variant, theme }) =>
+      variant === VARIANT_DELETE &&
+      `
+        margin-top: ${theme.margins.l};
       `}
   }
 `;

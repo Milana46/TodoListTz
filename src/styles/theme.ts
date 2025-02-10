@@ -32,6 +32,7 @@ export const baseTheme = {
     xxl: '50px',
     xxxl: '70px',
     xxxxxl: '200px',
+    xxxxxxl: '330px',
     xxvvv: '518px',
   },
 
@@ -67,6 +68,8 @@ export const baseTheme = {
   width: {
     max: '100%',
     normal: '90%',
+    midle: '238px',
+    xsmidle: '199px',
   },
 
   sizeOfElement: {
