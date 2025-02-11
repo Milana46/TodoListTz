@@ -7,11 +7,15 @@ interface SwitchThemesProps {
   onChangeTheme: (newTheme: string) => void;
 }
 
+const handleThemeChange =
+  (onChangeTheme: (newTheme: string) => void) => (e: React.ChangeEvent<HTMLSelectElement>) =>
+    onChangeTheme(e.target.value);
+
 export const SwitchThemes: FC<SwitchThemesProps> = ({ theme, onChangeTheme }) => {
   return (
     <ThemeContainer>
       <Label>Switch Theme</Label>
-      <Select value={theme} onChange={(e) => onChangeTheme(e.target.value)}>
+      <Select value={theme} onChange={handleThemeChange(onChangeTheme)}>
         <Option value="light">Light theme</Option>
         <Option value="dark">Dark theme</Option>
       </Select>

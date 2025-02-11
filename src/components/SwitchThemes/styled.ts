@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const SELECT_WIDTH = '150px';
 const SELECT_HEIGHT = '40px';
@@ -6,53 +6,61 @@ const SELECT_BACK_COLOR = '#fffafa';
 const SELECT_BORDER_COLOR = '#a1a1a1';
 
 export const ThemeContainer = styled.div`
-  margin-top: ${({ theme }) => theme.margins.xll};
-  margin-bottom: ${({ theme }) => theme.margins.s};
-  margin-left: ${({ theme }) => theme.margins.xxxl};
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.gap.xxs};
+  ${({ theme }) => css`
+    margin-top: ${theme.margins.xll};
+    margin-bottom: ${theme.margins.s};
+    margin-left: ${theme.margins.xxxl};
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.gap.xxs};
 
-  @media (${({ theme }) => theme.media.small}) {
-    margin-left: ${({ theme }) => theme.margins.s};
-    margin-top: ${({ theme }) => theme.margins.l};
-  }
+    @media (${theme.media.small}) {
+      margin-left: ${theme.margins.s};
+      margin-top: ${theme.margins.l};
+    }
+  `}
 `;
 
 export const Select = styled.select`
-  width: ${SELECT_WIDTH};
-  height: ${SELECT_HEIGHT};
-  background-color: ${SELECT_BACK_COLOR};
-  border: 1px solid ${SELECT_BORDER_COLOR};
-  border-radius: ${({ theme }) => theme.borderRadius.s};
-  padding: ${({ theme }) => theme.margins.xss};
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  ${({ theme }) => css`
+    width: ${SELECT_WIDTH};
+    height: ${SELECT_HEIGHT};
+    background-color: ${SELECT_BACK_COLOR};
+    border: 1px solid ${SELECT_BORDER_COLOR};
+    border-radius: ${theme.borderRadius.s};
+    padding: ${theme.margins.xss};
+    font-size: ${theme.fontSize.xs};
 
-  @media (${({ theme }) => theme.media.small}) {
-    width: ${({ theme }) => theme.width.max};
-  }
+    @media (${theme.media.small}) {
+      width: ${theme.width.max};
+    }
+  `}
 `;
 
 export const Label = styled.label`
-  width: ${({ theme }) => theme.sizeOfElement.s};
-  color: ${({ theme }) => theme.colors.brown};
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
-  line-height: ${({ theme }) => theme.lineHeight.xxs};
+  ${({ theme }) => css`
+    width: ${theme.sizeOfElement.s};
+    color: ${theme.colors.brown};
+    font-size: ${theme.fontSize.s};
+    font-weight: ${theme.fontWeight.normal};
+    line-height: ${theme.lineHeight.xxs};
 
-  @media (${({ theme }) => theme.media.small}) {
-    width: auto;
-    font-size: ${({ theme }) => theme.fontSize.xs};
-  }
+    @media (${theme.media.small}) {
+      width: auto;
+      font-size: ${theme.fontSize.xs};
+    }
+  `}
 `;
 
 export const Option = styled.option`
-  width: ${({ theme }) => theme.sizeOfElement.m};
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
-  line-height: ${({ theme }) => theme.lineHeight.xxs};
+  ${({ theme }) => css`
+    width: ${theme.sizeOfElement.m};
+    font-size: ${theme.fontSize.s};
+    font-weight: ${theme.fontWeight.normal};
+    line-height: ${theme.lineHeight.xxs};
 
-  @media (${({ theme }) => theme.media.small}) {
-    font-size: ${({ theme }) => theme.fontSize.xs};
-  }
+    @media (${theme.media.small}) {
+      font-size: ${theme.fontSize.xs};
+    }
+  `}
 `;

@@ -1,45 +1,53 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const AVATAR_SIZE_SMALL = '150px';
 
 export const Card = styled.div`
-  display: flex;
-  border: ${({ theme }) => `${theme.border.xxs} solid ${theme.colors.primary}`};
-  padding: ${({ theme }) => theme.margins.s};
-  margin-top: ${({ theme }) => theme.margins.s};
-  text-align: center;
-  margin-left: ${({ theme }) => theme.margins.xxxl};
+  ${({ theme }) => css`
+    display: flex;
+    border: ${theme.border.xxs} solid ${theme.colors.primary};
+    padding: ${theme.margins.s};
+    margin-top: ${theme.margins.s};
+    text-align: center;
+    margin-left: ${theme.margins.xxxl};
 
-  @media (${({ theme }) => theme.media.small}) {
-    flex-direction: column;
-    margin-left: ${({ theme }) => theme.margins.s};
-    padding: ${({ theme }) => theme.margins.xss};
-  }
+    @media (${theme.media.small}) {
+      flex-direction: column;
+      margin-left: ${theme.margins.s};
+      padding: ${theme.margins.xss};
+    }
+  `}
 `;
 
 export const CardWrapper = styled.div`
-  flex-direction: column;
-  align-items: flex-start;
+  ${({ theme }) => css`
+    flex-direction: column;
+    align-items: flex-start;
 
-  @media (${({ theme }) => theme.media.small}) {
-    align-items: center;
-  }
+    @media (${theme.media.small}) {
+      align-items: center;
+    }
+  `}
 `;
 
 export const AvatarContainer = styled.div`
-  position: relative;
-  width: ${({ theme }) => theme.sizeOfElement.l};
-  height: ${({ theme }) => theme.sizeOfElement.l};
+  ${({ theme }) => css`
+    position: relative;
+    width: ${theme.sizeOfElement.l};
+    height: ${theme.sizeOfElement.l};
 
-  @media (${({ theme }) => theme.media.small}) {
-    width: ${AVATAR_SIZE_SMALL};
-    height: ${AVATAR_SIZE_SMALL};
-  }
+    @media (${theme.media.small}) {
+      width: ${AVATAR_SIZE_SMALL};
+      height: ${AVATAR_SIZE_SMALL};
+    }
+  `}
 `;
 
 export const Avatar = styled.img`
-  width: ${({ theme }) => theme.width.max};
-  height: ${({ theme }) => theme.width.max};
-  border-radius: ${({ theme }) => theme.borderRadius.s};
-  object-fit: cover;
+  ${({ theme }) => css`
+    width: ${theme.width.max};
+    height: ${theme.width.max};
+    border-radius: ${theme.borderRadius.s};
+    object-fit: cover;
+  `}
 `;

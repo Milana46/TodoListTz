@@ -3,20 +3,17 @@ import { ROUTERS } from '@/public/constants';
 
 import * as S from './styled';
 
-const toggleMenu = (setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>) => () =>
-  setMenuOpen((prev) => !prev);
-
-const closeMenu = (setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>) => () =>
-  setMenuOpen(false);
-
 export const Navigation: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
       <S.NavBar>
         <S.Logo>Modsen Todo list</S.Logo>
-        <S.BurgerContainer onClick={toggleMenu(setMenuOpen)}>
+        <S.BurgerContainer onClick={toggleMenu}>
           <S.Burger open={menuOpen}>
             <span />
             <span />
@@ -29,10 +26,10 @@ export const Navigation: FC = () => {
         </S.NavLinksDesktop>
       </S.NavBar>
       <S.NavLinksMobile open={menuOpen}>
-        <S.StyledLink to={ROUTERS.home} onClick={closeMenu(setMenuOpen)}>
+        <S.StyledLink to={ROUTERS.home} onClick={closeMenu}>
           Home
         </S.StyledLink>
-        <S.StyledLink to={ROUTERS.settings} onClick={closeMenu(setMenuOpen)}>
+        <S.StyledLink to={ROUTERS.settings} onClick={closeMenu}>
           Settings
         </S.StyledLink>
       </S.NavLinksMobile>

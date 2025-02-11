@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const TASKLIST_BACK_COLOR = '#f9f9f9';
 const BUTTONICON_BACK_COLOR = '#f1f1f1';
@@ -8,139 +8,157 @@ const CHECKBOX_SIZE = '20px';
 const MEDIA_CHECKBOX_SIZE = '18px';
 
 export const TaskListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.gap.xs};
-  padding: ${({ theme }) => theme.margins.s};
-  max-width: ${({ theme }) => theme.sizeOfElement.xxl};
-  width: ${({ theme }) => theme.width.max};
-  margin: 0 auto;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.gap.xs};
+    padding: ${theme.margins.s};
+    max-width: ${theme.sizeOfElement.xxl};
+    width: ${theme.width.max};
+    margin: 0 auto;
 
-  @media (${({ theme }) => theme.media.medium}) {
-    padding: ${({ theme }) => theme.margins.xss};
-    max-width: ${({ theme }) => theme.width.max};
-  }
+    @media (${theme.media.medium}) {
+      padding: ${theme.margins.xss};
+      max-width: ${theme.width.max};
+    }
+  `}
 `;
 
 export const TaskListTitle = styled.h2`
-  margin-top: ${({ theme }) => theme.margins.xxl};
-  text-align: center;
-  width: 100%;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
-  line-height: ${({ theme }) => theme.lineHeight.m};
+  ${({ theme }) => css`
+    margin-top: ${theme.margins.xxl};
+    text-align: center;
+    width: 100%;
+    font-size: ${theme.fontSize.xl};
+    font-weight: ${theme.fontWeight.normal};
+    line-height: ${theme.lineHeight.m};
 
-  @media (${({ theme }) => theme.media.medium}) {
-    margin-top: ${({ theme }) => theme.margins.xxl};
-    font-size: ${({ theme }) => theme.fontSize.l};
-    line-height: ${({ theme }) => theme.lineHeight.xs};
-  }
+    @media (${theme.media.medium}) {
+      margin-top: ${theme.margins.xxl};
+      font-size: ${theme.fontSize.l};
+      line-height: ${theme.lineHeight.xs};
+    }
+  `}
 `;
 
 export const TaskListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.gap.xs};
-  padding: ${({ theme }) => theme.margins.s};
-  max-width: ${({ theme }) => theme.sizeOfElement.xxxl};
-  margin: 0 auto;
-  max-height: 400px;
-  overflow-y: auto;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.gap.xs};
+    padding: ${theme.margins.s};
+    max-width: ${theme.sizeOfElement.xxxl};
+    margin: 0 auto;
+    max-height: 400px;
+    overflow-y: auto;
 
-  @media (${({ theme }) => theme.media.medium}) {
-    max-width: ${({ theme }) => theme.width.max};
-    padding: ${({ theme }) => theme.margins.xss};
-  }
+    @media (${theme.media.medium}) {
+      max-width: ${theme.width.max};
+      padding: ${theme.margins.xss};
+    }
+  `}
 `;
 
 export const TaskItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${TASKLIST_BACK_COLOR};
-  padding: ${({ theme }) => theme.margins.xss};
-  border-radius: ${({ theme }) => theme.borderRadius.xs};
-  box-shadow: ${({ theme }) =>
-    `${theme.boxShadow.xsss} ${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.colors.black}`};
-  width: ${({ theme }) => theme.width.max};
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: ${TASKLIST_BACK_COLOR};
+    padding: ${theme.margins.xss};
+    border-radius: ${theme.borderRadius.xs};
+    box-shadow: ${theme.boxShadow.xsss} ${theme.boxShadow.xss} ${theme.boxShadow.xs}
+      ${theme.colors.black};
+    width: ${theme.width.max};
 
-  @media (${({ theme }) => theme.media.medium}) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    @media (${theme.media.medium}) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  `}
 `;
 
 export const TaskText = styled.span<{ completed: boolean }>`
-  flex-grow: 1;
-  font-size: ${({ theme }) => theme.fontSize.s};
-  text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
-  color: ${(props) => (props.completed ? '#b5b5b5' : '#333')};
-  margin-left: ${({ theme }) => theme.margins.s};
+  ${({ theme, completed }) => css`
+    flex-grow: 1;
+    font-size: ${theme.fontSize.s};
+    text-decoration: ${completed ? 'line-through' : 'none'};
+    color: ${completed ? '#b5b5b5' : '#333'};
+    margin-left: ${theme.margins.s};
 
-  @media (${({ theme }) => theme.media.medium}) {
-    font-size: ${({ theme }) => theme.fontSize.xs};
-    margin-left: ${({ theme }) => theme.margins.xsss};
-  }
+    @media (${theme.media.medium}) {
+      font-size: ${theme.fontSize.xs};
+      margin-left: ${theme.margins.xsss};
+    }
+  `}
 `;
 
 export const TaskActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.gap.xs};
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.gap.xs};
 
-  @media (${({ theme }) => theme.media.medium}) {
-    width: ${({ theme }) => theme.width.max};
-    justify-content: space-between;
-  }
+    @media (${theme.media.medium}) {
+      width: ${theme.width.max};
+      justify-content: space-between;
+    }
+  `}
 `;
 
 export const Checkbox = styled.input`
-  width: ${CHECKBOX_SIZE};
-  height: ${CHECKBOX_SIZE};
-  cursor: pointer;
-  accent-color: ${({ theme }) => theme.colors.secondary};
+  ${({ theme }) => css`
+    width: ${CHECKBOX_SIZE};
+    height: ${CHECKBOX_SIZE};
+    cursor: pointer;
+    accent-color: ${theme.colors.secondary};
 
-  @media (${({ theme }) => theme.media.medium}) {
-    width: ${MEDIA_CHECKBOX_SIZE};
-    height: ${MEDIA_CHECKBOX_SIZE};
-  }
+    @media (${theme.media.medium}) {
+      width: ${MEDIA_CHECKBOX_SIZE};
+      height: ${MEDIA_CHECKBOX_SIZE};
+    }
+  `}
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.gap.xs};
-  cursor: pointer;
+  ${({ theme }) => css`
+    display: flex;
+    gap: ${theme.gap.xs};
+    cursor: pointer;
 
-  @media (${({ theme }) => theme.media.medium}) {
-    gap: ${({ theme }) => theme.gap.xxs};
-  }
+    @media (${theme.media.medium}) {
+      gap: ${theme.gap.xxs};
+    }
+  `}
 `;
 
 export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${BUTTONICON_SIZE};
-  height: ${BUTTONICON_SIZE};
-  background-color: ${BUTTONICON_BACK_COLOR};
-  border-radius: ${({ theme }) => theme.borderRadius.xs};
-  transition: background-color 0.3s ease;
+  ${({ theme, isDelete }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: ${BUTTONICON_SIZE};
+    height: ${BUTTONICON_SIZE};
+    background-color: ${BUTTONICON_BACK_COLOR};
+    border-radius: ${theme.borderRadius.xs};
+    transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-  }
-
-  svg {
-    color: ${(props) => (props.isDelete ? 'red' : '#333')};
-    font-size: ${({ theme }) => theme.fontSize.m};
-
-    @media (${({ theme }) => theme.media.medium}) {
-      font-size: ${({ theme }) => theme.fontSize.xs};
+    &:hover {
+      background-color: ${theme.colors.secondary};
     }
-  }
 
-  @media (${({ theme }) => theme.media.medium}) {
-    width: ${MEDIA_BUTTONICON_SIZE};
-    height: ${MEDIA_BUTTONICON_SIZE};
-  }
+    svg {
+      color: ${isDelete ? 'red' : '#333'};
+      font-size: ${theme.fontSize.m};
+
+      @media (${theme.media.medium}) {
+        font-size: ${theme.fontSize.xs};
+      }
+    }
+
+    @media (${theme.media.medium}) {
+      width: ${MEDIA_BUTTONICON_SIZE};
+      height: ${MEDIA_BUTTONICON_SIZE};
+    }
+  `}
 `;

@@ -30,6 +30,7 @@ export const baseTheme = {
     xl: '30px',
     xll: '40px',
     xxl: '50px',
+    xxml: '60px',
     xxxl: '70px',
     xxxxxl: '200px',
     xxxxxxl: '330px',

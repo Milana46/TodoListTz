@@ -8,7 +8,6 @@ import { TaskListWrapper } from '../components/TaskList/styled';
 import { Container } from '../styles/container';
 
 export const Home: FC = () => {
-  //все функции!!!!!
   return (
     <>
       <Container>
