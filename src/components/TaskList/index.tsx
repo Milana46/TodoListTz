@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+
 import * as S from './styled';
 
 export const TaskList: FC = () => {

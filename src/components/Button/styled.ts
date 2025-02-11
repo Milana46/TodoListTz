@@ -32,24 +32,19 @@ interface StyledButtonProps {
 
 export const StyledButton = styled.button<StyledButtonProps>`
   ${({ theme }) => getButtonStyles(theme)}
+
   background-color: ${({ variant }) =>
     variant === VARIANT_DELETE ? BUTTON_DELETE_BACK_COLOR : BUTTON_ADD_BACK_COLOR};
+
   margin-left: ${({ variant, theme }) =>
     variant === VARIANT_DELETE ? theme.margins.xxxxxxl : theme.margins.xsss};
+
   width: ${({ variant, theme }) =>
     variant === VARIANT_DELETE ? theme.width.midle : theme.width.xsmidle};
 
   @media (${({ theme }) => theme.media.medium}) {
-    ${({ variant, theme }) =>
-      variant === VARIANT_ADD &&
-      `
-        margin-top: ${theme.margins.xxl};
-      `}
+    ${({ variant, theme }) => variant === VARIANT_ADD && `margin-top: ${theme.margins.xxl};`}
 
-    ${({ variant, theme }) =>
-      variant === VARIANT_DELETE &&
-      `
-        margin-top: ${theme.margins.l};
-      `}
+    ${({ variant, theme }) => variant === VARIANT_DELETE && `margin-top: ${theme.margins.l};`}
   }
 `;
