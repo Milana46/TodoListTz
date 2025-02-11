@@ -1,17 +1,14 @@
-import React, { FC } from 'react';
-
+import React from 'react';
+import { useTheme } from '@/context/themeContext';
 import { Label, Option, Select, ThemeContainer } from './style';
 
-interface SwitchThemesProps {
-  theme: string;
-  onChangeTheme: (newTheme: string) => void;
-}
+export const SwitchThemes: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
 
-export const SwitchThemes: FC<SwitchThemesProps> = ({ theme, onChangeTheme }) => {
   return (
     <ThemeContainer>
       <Label>Switch Theme</Label>
-      <Select value={theme} onChange={(e) => onChangeTheme(e.target.value)}>
+      <Select value={theme} onChange={() => toggleTheme()}>
         <Option value="light">Light theme</Option>
         <Option value="dark">Dark theme</Option>
       </Select>

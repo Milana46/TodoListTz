@@ -22,9 +22,11 @@ export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
           type="text"
           placeholder="Search name..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)} 
+          onChange={(e) => setQuery(e.target.value)}
         />
-        <SearchButton onClick={handleSearch}>Search</SearchButton>
+        <SearchButton onClick={handleSearch}>
+          <button>Search</button>
+        </SearchButton>
       </InputWrapper>
     </SearchContainer>
   );

@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import { ThemeProvider } from './context/themeContext';
 import { Navigation } from './components/Navigation';
 import { ROUTERS } from './constants';
 import { Home } from './pages/Home';
@@ -9,14 +9,16 @@ import { ErrorBoundary } from './error/Error';
 
 type RouteKey = keyof typeof ROUTERS;
 
-function App() {
+export function App() {
   return (
-    <ErrorBoundary>
-      <Router>
-        <Navigation />
-        <Routes>{listOfRoutes}</Routes>
-      </Router>
-    </ErrorBoundary>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <Router>
+          <Navigation />
+          <Routes>{listOfRoutes}</Routes>
+        </Router>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 
