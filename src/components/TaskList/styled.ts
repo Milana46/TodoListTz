@@ -148,7 +148,7 @@ export const ButtonIcon = styled.div<{ isDelete?: boolean }>`
     }
 
     svg {
-      color: ${isDelete ? 'red' : '#333'};
+      color: ${isDelete ? BUTTONICON_BACK_COLOR : '#333'};
       font-size: ${theme.fontSize.m};
 
       @media (${theme.media.medium}) {
