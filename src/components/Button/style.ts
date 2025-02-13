@@ -13,6 +13,10 @@ export const StyledDeleteButton = styled.button`
   font-weight: 400;
   text-align: center;
 
+  &:hover {
+    background-color: #e91e63;
+  }
+
   @media (max-width: 450px) {
     width: 90%;
     justify-content: center;
@@ -34,6 +38,10 @@ export const StyledAddButton = styled.button`
   line-height: 34.68px;
   font-weight: 400;
   text-align: center;
+
+   &:hover {
+    background-color: #303f9f;
+  }
 
   @media (max-width: 450px) {
     width: 100%;
