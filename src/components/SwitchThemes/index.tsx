@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 
 import { Label, Option, Select, ThemeContainer } from './styled';
 
@@ -8,7 +8,7 @@ interface SwitchThemesProps {
 }
 
 const handleThemeChange =
-  (onChangeTheme: (newTheme: string) => void) => (e: React.ChangeEvent<HTMLSelectElement>) =>
+  (onChangeTheme: (newTheme: string) => void) => (e: ChangeEvent<HTMLSelectElement>) =>
     onChangeTheme(e.target.value);
 
 export const SwitchThemes: FC<SwitchThemesProps> = ({ theme, onChangeTheme }) => {
