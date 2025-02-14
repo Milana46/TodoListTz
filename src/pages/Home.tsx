@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 import { InputField } from '../components/InputField';
 import { Container } from '../styles/container';
-import { TaskListTitle } from '../components/TaskList/style';
+import { TaskListTitle } from '../components/TaskList/styled';
 import { TaskList } from '../components/TaskList';
-import { TaskListWrapper } from '../components/TaskList/style';
+import { TaskListWrapper } from '../components/TaskList/styled';
 import { Button } from '../components/Button';
 import { ArrayListTask } from '../constants';
 

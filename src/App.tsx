@@ -2,9 +2,11 @@ import React, { JSX } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Navigation } from './components/Navigation';
+import { ThemeProvider } from 'styled-components';
 import { ROUTERS } from './constants';
 import { Home } from './pages/Home';
 import { Settings } from './pages/Settings';
+import { baseTheme } from '././styles/theme';
 import { ErrorBoundary } from './error/Error';
 
 type RouteKey = keyof typeof ROUTERS;
@@ -12,10 +14,12 @@ type RouteKey = keyof typeof ROUTERS;
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
-        <Navigation />
-        <Routes>{listOfRoutes}</Routes>
-      </Router>
+      <ThemeProvider theme={baseTheme}>
+        <Router>
+          <Navigation />
+          <Routes>{listOfRoutes}</Routes>
+        </Router>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }
