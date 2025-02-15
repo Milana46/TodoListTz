@@ -5,6 +5,7 @@ import { TaskListTitle } from '../components/TaskList/styled';
 import { TaskList } from '../components/TaskList';
 import { TaskListWrapper } from '../components/TaskList/styled';
 import { Button } from '../components/Button';
+import { toast } from 'react-toastify';
 import { ArrayListTask } from '../constants';
 
 interface Task {
@@ -28,8 +29,15 @@ export const Home: FC = () => {
   }, [todoList]);
 
   function addOrEditTodo() {
-    if (inputValue.trim() === '') {
-      throw new Error('Empty field, please, enter your task!');
+    if (inputValue.trim() === '') return;
+
+    if (inputValue.length > 20) {
+      toast.warning('You can pass only 20 symbols', {
+        autoClose: 2000,
+        closeOnClick: true,
+        position: 'top-right',
+      });
+      return;
     }
 
     if (editingTask) {
@@ -44,8 +52,8 @@ export const Home: FC = () => {
     setInputValue('');
   }
 
-  function removeTask(removeIndex: number) {
-    setTodoList((prevList) => prevList.filter((_, index) => index !== removeIndex));
+  function removeTask(name: string) {
+    setTodoList((prevList) => prevList.filter((task) => task.name !== name));
   }
 
   function toggleTask(name: string) {
@@ -54,31 +62,38 @@ export const Home: FC = () => {
     );
   }
 
-  function deleteCheckedTask() {
-    setTodoList((prevList) => prevList.filter((task) => !task.isChecked));
-  }
-
   function startEditingTask(name: string) {
     setInputValue(name);
     setEditingTask(name);
   }
 
+  function deleteCheckedTask() {
+    setTodoList((prevList) => prevList.filter((task) => !task.isChecked));
+  }
+
   return (
     <>
       <Container>
-        <InputField inputValue={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <InputField inputValue={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+          {inputValue.length > 20 && (
+            <span style={{ color: 'red', fontSize: '14px', marginTop: '5px' }}>
+              Сообщение слишком длинное
+            </span>
+          )}
+        </div>
         <Button content={editingTask ? 'Edit' : 'Add todo'} variant="add" onClick={addOrEditTodo} />
       </Container>
       <TaskListTitle>Task list</TaskListTitle>
       <TaskListWrapper>
-        {todoList.map((data, index) => (
+        {todoList.map((task, index) => (
           <TaskList
             key={index}
-            name={data.name}
-            isChecked={data.isChecked}
-            onRemove={() => removeTask(index)}
-            onChange={startEditingTask}
-            onToggle={() => toggleTask(data.name)}
+            name={task.name}
+            isChecked={task.isChecked}
+            onRemove={removeTask}
+            onEdit={startEditingTask}
+            onToggle={toggleTask}
           />
         ))}
       </TaskListWrapper>
