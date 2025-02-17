@@ -6,12 +6,13 @@ import { TaskList } from '../components/TaskList';
 import { TaskListWrapper } from '../components/TaskList/styled';
 import { Button } from '../components/Button';
 import { toast } from 'react-toastify';
-import { ArrayListTask } from '../constants';
 
 interface Task {
   name: string;
   isChecked: boolean;
 }
+
+const ArrayListTask: string[] = ['first', 'second'];
 
 const handleInputChange =
   (setInputValue: React.Dispatch<React.SetStateAction<string>>) =>

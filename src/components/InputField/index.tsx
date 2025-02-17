@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 
 import { StyledInput, StyledLabel } from './styled';
 
 interface InputFieldProps {
   inputValue: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputField: FC<InputFieldProps> = ({ inputValue, onChange }) => {
