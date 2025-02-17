@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { InputField } from '../components/InputField';
 import { Container } from '../styles/container';
 import { TaskListTitle } from '../components/TaskList/styled';
@@ -15,22 +15,23 @@ interface Task {
 const ArrayListTask: string[] = ['first', 'second'];
 
 const handleInputChange =
-  (setInputValue: React.Dispatch<React.SetStateAction<string>>) =>
-  (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  (setInputValue: Dispatch<React.SetStateAction<string>>) =>
+  (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
 const handleAddOrEditTodo = (
   inputValue: string,
-  setTodoList: React.Dispatch<React.SetStateAction<Task[]>>,
+  setTodoList: Dispatch<SetStateAction<Task[]>>,
   editingTask: string | null,
-  setEditingTask: React.Dispatch<React.SetStateAction<string | null>>,
-  setInputValue: React.Dispatch<React.SetStateAction<string>>
+  hasExceededLimit: boolean,
+  setEditingTask: Dispatch<SetStateAction<string | null>>,
+  setInputValue: Dispatch<SetStateAction<string>>
 ) => {
   if (inputValue.trim() === '') return;
 
-  if (inputValue.length > 20) {
-    toast.warning('You can pass only 20 symbols', {
+  if (hasExceededLimit) {
+    toast.warning('You cannot add a task with more than 40 symbols', {
       autoClose: 2000,
       closeOnClick: true,
       position: 'top-right',
@@ -50,32 +51,29 @@ const handleAddOrEditTodo = (
   setInputValue('');
 };
 
-const handleRemoveTask =
-  (setTodoList: React.Dispatch<React.SetStateAction<Task[]>>) => (name: string) => {
-    setTodoList((prevList) => prevList.filter((task) => task.name !== name));
-  };
+const handleRemoveTask = (setTodoList: Dispatch<SetStateAction<Task[]>>) => (name: string) => {
+  setTodoList((prevList) => prevList.filter((task) => task.name !== name));
+};
 
-const handleToggleTask =
-  (setTodoList: React.Dispatch<React.SetStateAction<Task[]>>) => (name: string) => {
-    setTodoList((prevList) =>
-      prevList.map((task) => (task.name === name ? { ...task, isChecked: !task.isChecked } : task))
-    );
-  };
+const handleToggleTask = (setTodoList: Dispatch<SetStateAction<Task[]>>) => (name: string) => {
+  setTodoList((prevList) =>
+    prevList.map((task) => (task.name === name ? { ...task, isChecked: !task.isChecked } : task))
+  );
+};
 
 const handleStartEditingTask =
   (
-    setInputValue: React.Dispatch<React.SetStateAction<string>>,
-    setEditingTask: React.Dispatch<React.SetStateAction<string | null>>
+    setInputValue: Dispatch<SetStateAction<string>>,
+    setEditingTask: Dispatch<SetStateAction<string | null>>
   ) =>
   (name: string) => {
     setInputValue(name);
     setEditingTask(name);
   };
 
-const handleDeleteCheckedTask =
-  (setTodoList: React.Dispatch<React.SetStateAction<Task[]>>) => () => {
-    setTodoList((prevList) => prevList.filter((task) => !task.isChecked));
-  };
+const handleDeleteCheckedTask = (setTodoList: Dispatch<SetStateAction<Task[]>>) => () => {
+  setTodoList((prevList) => prevList.filter((task) => !task.isChecked));
+};
 
 export const Home: FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -87,19 +85,24 @@ export const Home: FC = () => {
   });
 
   const [editingTask, setEditingTask] = useState<string | null>(null);
+  const [hasExceededLimit, setHasExceededLimit] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todoList));
   }, [todoList]);
+
+  useEffect(() => {
+    setHasExceededLimit(inputValue.length > 40);
+  }, [inputValue]);
 
   return (
     <>
       <Container>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <InputField inputValue={inputValue} onChange={handleInputChange(setInputValue)} />
-          {inputValue.length > 50 && (
+          {hasExceededLimit && (
             <span style={{ color: 'red', fontSize: '14px', marginTop: '5px' }}>
-              your message is too long, you can enter 50 symbols
+              Your message is too long, you can enter up to 40 symbols
             </span>
           )}
         </div>
@@ -107,7 +110,14 @@ export const Home: FC = () => {
           content={editingTask ? 'Edit' : 'Add todo'}
           variant="add"
           onClick={() =>
-            handleAddOrEditTodo(inputValue, setTodoList, editingTask, setEditingTask, setInputValue)
+            handleAddOrEditTodo(
+              inputValue,
+              setTodoList,
+              editingTask,
+              hasExceededLimit,
+              setEditingTask,
+              setInputValue
+            )
           }
         />
       </Container>
