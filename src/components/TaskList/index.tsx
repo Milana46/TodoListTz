@@ -10,23 +10,23 @@ interface TaskListProps {
   isChecked: boolean;
 }
 
-const handleToggle = (onToggle: (name: string) => void, name: string) => () => onToggle(name);
-const handleEdit = (onEdit: (name: string) => void, name: string) => () => onEdit(name);
-const handleRemove = (onRemove: (name: string) => void, name: string) => () => onRemove(name);
-
 export const TaskList: FC<TaskListProps> = ({ name, onRemove, onEdit, onToggle, isChecked }) => {
+  const toggleTask = () => onToggle(name);
+  const editTask = () => onEdit(name);
+  const removeTask = () => onRemove(name);
+
   return (
     <S.TaskListContainer>
       <S.TaskItem>
         <S.TaskActions>
-          <input type="checkbox" checked={isChecked} onChange={handleToggle(onToggle, name)} />
+          <input type="checkbox" checked={isChecked} onChange={toggleTask} />
           <S.TaskText completed={false}>{name}</S.TaskText>
         </S.TaskActions>
         <S.ButtonContainer>
-          <S.ButtonIcon onClick={handleEdit(onEdit, name)}>
+          <S.ButtonIcon onClick={editTask}>
             <FaEdit />
           </S.ButtonIcon>
-          <S.ButtonIcon onClick={handleRemove(onRemove, name)}>
+          <S.ButtonIcon onClick={removeTask}>
             <FaTrash />
           </S.ButtonIcon>
         </S.ButtonContainer>

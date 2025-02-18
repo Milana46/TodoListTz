@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import { Home } from '@/pages/Home';
+import { Home } from '@/pages/Home/Home';
 import { Settings } from '@/pages/Settings';
 import { ROUTERS } from '@/public/constants';
 
