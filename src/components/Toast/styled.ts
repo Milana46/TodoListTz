@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import { MESSAGE_COLORS } from '@/constants/messageColors';
 
-import { MESSAGE_COLORS } from './../../constants/constantsTopoast';
+import styled, { css } from 'styled-components';
 
 export const ToastWrapper = styled.div<{ type: 'success' | 'error' | 'warning' }>`
   ${({ theme, type }) => css`

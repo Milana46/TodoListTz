@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+
+import edit from '@/assets/images/edits.png';
+import trash from '@/assets/images/trash.png';
 import * as Image from '@/helpers/image';
-import edit from '@/images/edits.png';
-import trash from '@/images/trash.png';
 
 import * as S from './styled';
 

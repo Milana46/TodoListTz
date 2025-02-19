@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import { Button } from '@/components/Button';
 import { InputField } from '@/components/InputField';
 import { TaskList } from '@/components/TaskList';
@@ -6,7 +6,6 @@ import { TaskListTitle } from '@/components/TaskList/styled';
 import { TaskListWrapper } from '@/components/TaskList/styled';
 import { Toast } from '@/components/Toast';
 import { getInitialTodoList } from '@/helpers/homeHelpers';
-import { updateTodoList } from '@/helpers/toDoHelpers';
 import { Container } from '@/styles/container';
 import { Task } from '@/types/types';
 
@@ -41,6 +40,24 @@ export const Home: FC = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setInputValue(event.target.value);
+
+  const updateTodoList = (
+    inputValue: string,
+    editingTask: string | null,
+    _todoList: Task[],
+    setTodoList: Dispatch<SetStateAction<Task[]>>,
+    setEditingTask: Dispatch<SetStateAction<string | null>>,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => {
+    setTodoList((prevList) =>
+      editingTask
+        ? prevList.map((task) => (task.name === editingTask ? { ...task, name: inputValue } : task))
+        : [...prevList, { name: inputValue, isChecked: false }]
+    );
+
+    setEditingTask(null);
+    setInputValue('');
+  };
 
   const handleAddOrEditTodo = () => {
     if (inputValue.trim() === '') return;
