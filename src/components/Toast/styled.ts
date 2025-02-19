@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { MESSAGE_COLORS } from './../../constants/constantsTopoast';
+
 export const ToastWrapper = styled.div<{ type: 'success' | 'error' | 'warning' }>`
   ${({ theme, type }) => css`
     position: fixed;
@@ -8,8 +10,8 @@ export const ToastWrapper = styled.div<{ type: 'success' | 'error' | 'warning' }
     padding: ${theme.margins.s};
     color: ${theme.colors.primary};
     border-radius: ${theme.colors.xs};
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    background-color: ${type === 'success' ? 'green' : type === 'error' ? 'red' : 'orange'};
+    box-shadow: ${theme.boxShadow.xsss} ${theme.boxShadow.xss} ${theme.boxShadow.xs}
+      ${theme.colors.black};
+    background-color: ${MESSAGE_COLORS[type]};
   `}
 `;

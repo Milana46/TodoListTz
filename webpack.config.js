@@ -40,6 +40,10 @@ const config = {
       { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.ts$/, exclude: /node_modules/, loader: 'ts-loader' },
       { test: /\.tsx$/, exclude: /node_modules/, loader: 'ts-loader' },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+      },
     ],
   },
 };

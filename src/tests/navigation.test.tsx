@@ -1,10 +1,12 @@
 import React from 'react';
-import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { Navigation } from './../components/Navigation';
-import { ROUTERS } from './../public/constants';
 import { BrowserRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
+
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+
+import { ROUTERS } from '../constants/constantsRouter';
+import { Navigation } from './../components/Navigation';
 import { baseTheme } from './../styles/theme';
 
 const renderWithTheme = (ui: React.ReactElement) => {

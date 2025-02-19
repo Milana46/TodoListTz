@@ -1,7 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { renderWithTheme, screen, fireEvent } from './testUtils';
+
 import { InputField } from './../components/InputField';
+import { fireEvent, renderWithTheme, screen } from './testUtils';
 
 interface RenderInputFieldOptions {
   inputValue?: string;

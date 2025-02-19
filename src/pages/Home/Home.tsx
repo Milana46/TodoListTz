@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useState, ChangeEvent } from 'react';
-import { InputField } from '@/components/InputField';
-import { Container } from '@/styles/container';
-import { TaskListTitle } from '@/components/TaskList/styled';
-import { TaskList } from '@/components/TaskList';
-import { TaskListWrapper } from '@/components/TaskList/styled';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Button } from '@/components/Button';
-import { getInitialTodoList } from '@/helpers/homeHelpers';
+import { InputField } from '@/components/InputField';
+import { TaskList } from '@/components/TaskList';
+import { TaskListTitle } from '@/components/TaskList/styled';
+import { TaskListWrapper } from '@/components/TaskList/styled';
 import { Toast } from '@/components/Toast';
-import { InputContainer, ErrorMessage } from './styled';
-import { Task } from '@/types/types';
+import { getInitialTodoList } from '@/helpers/homeHelpers';
 import { updateTodoList } from '@/helpers/toDoHelpers';
+import { Container } from '@/styles/container';
+import { Task } from '@/types/types';
+
+import { ErrorMessage, InputContainer } from './styled';
 
 const ArrayListTask: string[] = ['first', 'second'];
 
@@ -70,8 +71,9 @@ export const Home: FC = () => {
 
   return (
     <>
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-
+      {toast && (
+        <Toast message={toast.message} type={toast.type} onClose={setToast.bind(null, null)} />
+      )}
       <Container>
         <InputContainer>
           <InputField inputValue={inputValue} onChange={handleInputChange} />

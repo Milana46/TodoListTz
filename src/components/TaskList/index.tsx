@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import * as Image from '@/helpers/image';
+import edit from '@/images/edits.png';
+import trash from '@/images/trash.png';
+
 import * as S from './styled';
 
 interface TaskListProps {
@@ -24,10 +27,10 @@ export const TaskList: FC<TaskListProps> = ({ name, onRemove, onEdit, onToggle, 
         </S.TaskActions>
         <S.ButtonContainer>
           <S.ButtonIcon onClick={editTask}>
-            <FaEdit />
+            <Image.Icon path={edit} />
           </S.ButtonIcon>
           <S.ButtonIcon onClick={removeTask}>
-            <FaTrash />
+            <Image.Icon path={trash} />
           </S.ButtonIcon>
         </S.ButtonContainer>
       </S.TaskItem>
