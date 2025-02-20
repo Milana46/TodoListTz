@@ -5,7 +5,6 @@ import { InputField } from '@/components/InputField';
 import { TaskList } from '@/components/TaskList';
 import { TaskListTitle } from '@/components/TaskList/styled';
 import { TaskListWrapper } from '@/components/TaskList/styled';
-import { Toast } from '@/components/Toast';
 import { getInitialTodoList } from '@/helpers/homeHelpers';
 import { Container } from '@/styles/container';
 import { Task } from '@/types/types';
@@ -89,9 +88,6 @@ export const Home: FC = () => {
 
   return (
     <>
-      {toast && (
-        <Toast message={toast.message} type={toast.type} onClose={setToast.bind(null, null)} />
-      )}
       <Container>
         <InputContainer>
           <InputField inputValue={inputValue} onChange={handleInputChange} />
@@ -123,7 +119,7 @@ export const Home: FC = () => {
             ))}
       </TaskListWrapper>
 
-      {todoList.length > 0 && (
+      {todoList.length > 1 && (
         <Button content="Delete Selected" variant="delete" onClick={handleDeleteCheckedTask} />
       )}
     </>

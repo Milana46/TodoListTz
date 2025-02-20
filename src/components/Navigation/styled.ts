@@ -24,6 +24,7 @@ export const Logo = styled.h1`
     font-size: ${theme.fontSize.xl};
     font-weight: bold;
     margin: ${theme.margins.xsss};
+    margin-left: ${theme.margins.m};
     line-height: ${theme.lineHeight.m};
   `}
 `;
@@ -115,6 +116,7 @@ export const StyledLink = styled(Link)`
     font-size: ${theme.fontSize.xl};
     line-height: ${theme.lineHeight.m};
     position: relative;
+    margin-right: ${theme.margins.m};
 
     &::after {
       content: '';
