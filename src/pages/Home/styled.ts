@@ -12,3 +12,12 @@ export const ErrorMessage = styled.span`
     margin-top: ${theme.margins.xss};
   `}
 `;
+
+export const PortalMessage = styled.p`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    font-size: ${theme.fontSize.m};
+    font-weight: bold;
+  `}
+`;

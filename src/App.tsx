@@ -8,19 +8,23 @@ import { Navigation } from './components/Navigation';
 import { ROUTERS } from './constants/constantsRouter';
 import { ErrorBoundary } from './error/Error';
 import { getComponentByKey } from './helpers/getComponentByKey';
+import { GlobalStyle } from './styles/globalStyle';
 
 type RouteKey = keyof typeof ROUTERS;
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider theme={baseTheme}>
-        <Router>
-          <Navigation />
-          <Routes>{listOfRoutes}</Routes>
-        </Router>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <>
+      <GlobalStyle />
+      <ErrorBoundary>
+        <ThemeProvider theme={baseTheme}>
+          <Router>
+            <Navigation />
+            <Routes>{listOfRoutes}</Routes>
+          </Router>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </>
   );
 }
 

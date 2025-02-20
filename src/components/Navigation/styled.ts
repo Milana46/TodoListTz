@@ -11,11 +11,10 @@ export const NavBar = styled.nav`
     align-items: center;
     justify-content: space-between;
     background-color: ${theme.colors.secondary};
-    padding: ${theme.margins.s} ${theme.margins.l};
     color: ${theme.colors.primary};
     box-shadow: ${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s}
       ${theme.colors.black};
-    position: relative;
+    position: sticky;
     z-index: 1001;
   `}
 `;
@@ -54,7 +53,7 @@ export const NavLinksMobile = styled.div<{ open: boolean }>`
       padding: ${theme.margins.s};
 
       position: fixed;
-      top: ${theme.margins.xxml};
+      top: ${theme.margins.xxl};
       left: 0;
       right: 0;
       z-index: 1000;

@@ -12,10 +12,7 @@ export const Settings: React.FC = () => {
     <>
       <SwitchThemes theme={theme} onChangeTheme={setTheme} />
       <SearchField onSearch={(searchValue) => setQuery(searchValue)} />
-      <GitCard
-        login={'IvanovIvan'}
-        userUrl={'https://assets.techrepublic.com/uploads/2022/08/clone-github-repository.jpeg'}
-      ></GitCard>
+      <GitCard login={'IvanovIvan'}></GitCard>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import '@testing-library/jest-dom';
 
 import { InputField } from './../components/InputField';
@@ -6,7 +6,7 @@ import { fireEvent, renderWithTheme, screen } from './testUtils';
 
 interface RenderInputFieldOptions {
   inputValue?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const renderInputField = ({

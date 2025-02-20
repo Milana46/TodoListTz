@@ -1,4 +1,5 @@
 import React, { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from '@/components/Button';
 import { InputField } from '@/components/InputField';
 import { TaskList } from '@/components/TaskList';
@@ -9,7 +10,7 @@ import { getInitialTodoList } from '@/helpers/homeHelpers';
 import { Container } from '@/styles/container';
 import { Task } from '@/types/types';
 
-import { ErrorMessage, InputContainer } from './styled';
+import { ErrorMessage, InputContainer, PortalMessage } from './styled';
 
 const ArrayListTask: string[] = ['first', 'second'];
 
@@ -106,17 +107,20 @@ export const Home: FC = () => {
       </Container>
 
       <TaskListTitle>Task list</TaskListTitle>
+
       <TaskListWrapper>
-        {todoList.map(({ name, isChecked }) => (
-          <TaskList
-            key={name}
-            name={name}
-            isChecked={isChecked}
-            onRemove={handleRemoveTask}
-            onEdit={handleStartEditingTask}
-            onToggle={handleToggleTask}
-          />
-        ))}
+        {todoList.length === 0
+          ? createPortal(<PortalMessage>There are not any tasks</PortalMessage>, document.body)
+          : todoList.map(({ name, isChecked }) => (
+              <TaskList
+                key={name}
+                name={name}
+                isChecked={isChecked}
+                onRemove={handleRemoveTask}
+                onEdit={handleStartEditingTask}
+                onToggle={handleToggleTask}
+              />
+            ))}
       </TaskListWrapper>
 
       {todoList.length > 0 && (
