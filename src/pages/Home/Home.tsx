@@ -1,7 +1,7 @@
-import React, { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '@/components/Button';
-import { InputField } from '@/components/InputField';
+import { InputVolidation } from '@/components/InputVolidation';
 import { TaskList } from '@/components/TaskList';
 import { TaskListTitle } from '@/components/TaskList/styled';
 import { TaskListWrapper } from '@/components/TaskList/styled';
@@ -9,7 +9,7 @@ import { getInitialTodoList } from '@/helpers/homeHelpers';
 import { Container } from '@/styles/container';
 import { Task } from '@/types/types';
 
-import { ErrorMessage, InputContainer, PortalMessage } from './styled';
+import { PortalMessage } from './styled';
 
 const ArrayListTask: string[] = ['first', 'second'];
 
@@ -41,14 +41,7 @@ export const Home: FC = () => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setInputValue(event.target.value);
 
-  const updateTodoList = (
-    inputValue: string,
-    editingTask: string | null,
-    _todoList: Task[],
-    setTodoList: Dispatch<SetStateAction<Task[]>>,
-    setEditingTask: Dispatch<SetStateAction<string | null>>,
-    setInputValue: Dispatch<SetStateAction<string>>
-  ) => {
+  const updateTodoList = () => {
     setTodoList((prevList) =>
       editingTask
         ? prevList.map((task) => (task.name === editingTask ? { ...task, name: inputValue } : task))
@@ -67,7 +60,7 @@ export const Home: FC = () => {
       return;
     }
 
-    updateTodoList(inputValue, editingTask, todoList, setTodoList, setEditingTask, setInputValue);
+    updateTodoList();
   };
 
   const handleRemoveTask = (name: string) =>
@@ -89,12 +82,11 @@ export const Home: FC = () => {
   return (
     <>
       <Container>
-        <InputContainer>
-          <InputField inputValue={inputValue} onChange={handleInputChange} />
-          {hasExceededLimit && (
-            <ErrorMessage>Your message is too long, you can enter up to 40 symbols</ErrorMessage>
-          )}
-        </InputContainer>
+        <InputVolidation
+          inputValue={inputValue}
+          hasExceededLimit={hasExceededLimit}
+          onChange={handleInputChange}
+        />
         <Button
           content={editingTask ? 'Edit' : 'Add todo'}
           variant="add"
