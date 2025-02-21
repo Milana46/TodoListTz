@@ -7,7 +7,7 @@ import { TaskListTitle } from '@/components/TaskList/styled';
 import { TaskListWrapper } from '@/components/TaskList/styled';
 import { getInitialTodoList } from '@/helpers/homeHelpers';
 import { Container } from '@/styles/container';
-import { Task } from '@/types/types';
+import { Task } from '@/types/Task';
 
 import { PortalMessage } from './styled';
 

@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '././styles/theme';
 import { Navigation } from './components/Navigation';
 import { ROUTERS } from './constants/constantsRouter';
-import { ErrorBoundary } from './error/Error';
+import { ErrorBoundary } from './error/ErrorBoundary';
 import { getComponentByKey } from './helpers/getComponentByKey';
 import { GlobalStyle } from './styles/globalStyle';
 
