@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import styled, { css } from 'styled-components';
 
 const SPAN_BURGER_HEIGHT = '4px';
@@ -10,11 +11,10 @@ export const NavBar = styled.nav`
     align-items: center;
     justify-content: space-between;
     background-color: ${theme.colors.secondary};
-    padding: ${theme.margins.s} ${theme.margins.l};
     color: ${theme.colors.primary};
     box-shadow: ${theme.boxShadow.xss} ${theme.boxShadow.xs} ${theme.boxShadow.s}
       ${theme.colors.black};
-    position: relative;
+    position: sticky;
     z-index: 1001;
   `}
 `;
@@ -24,6 +24,7 @@ export const Logo = styled.h1`
     font-size: ${theme.fontSize.xl};
     font-weight: bold;
     margin: ${theme.margins.xsss};
+    margin-left: ${theme.margins.m};
     line-height: ${theme.lineHeight.m};
   `}
 `;
@@ -53,7 +54,7 @@ export const NavLinksMobile = styled.div<{ open: boolean }>`
       padding: ${theme.margins.s};
 
       position: fixed;
-      top: ${theme.margins.xxml};
+      top: ${theme.margins.xxl};
       left: 0;
       right: 0;
       z-index: 1000;
@@ -115,6 +116,7 @@ export const StyledLink = styled(Link)`
     font-size: ${theme.fontSize.xl};
     line-height: ${theme.lineHeight.m};
     position: relative;
+    margin-right: ${theme.margins.m};
 
     &::after {
       content: '';

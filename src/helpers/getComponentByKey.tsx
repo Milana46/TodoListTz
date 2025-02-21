@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
-import { Home } from '@/pages/Home';
+import { ROUTERS } from '@/constants/constantsRouter';
+import { Home } from '@/pages/Home/Home';
 import { Settings } from '@/pages/Settings';
-import { ROUTERS } from '@/public/constants';
 
 type RouteKey = keyof typeof ROUTERS;
 

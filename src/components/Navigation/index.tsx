@@ -1,19 +1,24 @@
 import React, { FC, useState } from 'react';
-import { ROUTERS } from '@/public/constants';
 
+import { ROUTERS } from './../../constants/constantsRouter';
 import * as S from './styled';
 
 export const Navigation: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <>
       <S.NavBar>
         <S.Logo>Modsen Todo list</S.Logo>
-        <S.BurgerContainer onClick={toggleMenu}>
+        <S.BurgerContainer onClick={toggleMenu} data-testid="burger-button">
           <S.Burger open={menuOpen}>
             <span />
             <span />

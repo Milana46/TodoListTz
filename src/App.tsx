@@ -2,24 +2,29 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
-import { baseTheme } from 'styles/theme';
 
+import { baseTheme } from '././styles/theme';
 import { Navigation } from './components/Navigation';
-import { ROUTERS } from './public/constants';
-import { GlobalStyle } from './styles/globalStyle';
+import { ROUTERS } from './constants/constantsRouter';
+import { ErrorBoundary } from './error/ErrorBoundary';
 import { getComponentByKey } from './helpers/getComponentByKey';
+import { GlobalStyle } from './styles/globalStyle';
 
 type RouteKey = keyof typeof ROUTERS;
 
 function App() {
   return (
-    <ThemeProvider theme={baseTheme}>
+    <>
       <GlobalStyle />
-      <Router>
-        <Navigation />
-        <Routes>{listOfRoutes}</Routes>
-      </Router>
-    </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider theme={baseTheme}>
+          <Router>
+            <Navigation />
+            <Routes>{listOfRoutes}</Routes>
+          </Router>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </>
   );
 }
 
