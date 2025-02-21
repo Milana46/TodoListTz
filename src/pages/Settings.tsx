@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { GitCard } from '../components/GitCard';
-import { SearchField } from '../components/SearchField';
-import { SwitchThemes } from '../components/SwitchThemes';
+import React, { FC, useEffect, useState } from 'react';
+import { GitCard } from '@/components/GitCard';
+import { SearchField } from '@/components/SearchField';
+import { SwitchThemes } from '@/components/SwitchThemes';
 import { useTheme } from '@/context/themeContext';
 
-export const Settings: React.FC = () => {
+export const Settings: FC = () => {
   const { theme } = useTheme();
   const [userData, setUserData] = useState<{ login: string; avatar_url: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -26,9 +26,8 @@ export const Settings: React.FC = () => {
       const user = { login: data.login, avatar_url: data.avatar_url };
 
       localStorage.setItem('userData', JSON.stringify(user));
-
       setUserData(user);
-    } catch (err) {
+    } catch {
       setError('User is not found!');
     }
   };

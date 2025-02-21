@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Avatar, AvatarContainer, Card, CardWrapper } from './style';
+import { Avatar, AvatarContainer, Card, CardWrapper } from './styled';
 
 interface GitCardProps {
   login: string;

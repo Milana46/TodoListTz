@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { lightTheme, darkTheme } from '@/styles/stylesForThheme';
+import React, { createContext, FC,ReactNode, useContext, useState } from 'react';
+import { darkTheme,lightTheme } from '@/styles/stylesForThheme';
+import { baseTheme } from '@/styles/theme';
+
+import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 
 interface ThemeContextType {
   theme: string;
@@ -8,7 +11,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   const toggleTheme = () => {
@@ -28,8 +31,10 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <style>{generateCSS(currentTheme)}</style>
-      {children}
+      <StyledComponentThemeProvider theme={baseTheme}>
+        <style>{generateCSS(currentTheme)}</style>
+        {children}
+      </StyledComponentThemeProvider>
     </ThemeContext.Provider>
   );
 };

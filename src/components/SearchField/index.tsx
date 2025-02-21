@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { Input, InputWrapper, Label, SearchButton, SearchContainer } from './style';
+
+import { Input, InputWrapper, Label, SearchButton, SearchContainer } from './styled';
 
 interface SearchFieldProps {
   onSearch: (username: string) => void;
@@ -22,7 +23,9 @@ export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
           type="text"
           placeholder="Search name..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setQuery(e.target.value)
+          }
         />
         <SearchButton onClick={handleSearch}>
           <button>Search</button>

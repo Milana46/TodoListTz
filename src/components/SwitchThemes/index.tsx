@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '@/context/themeContext';
-import { Label, Option, Select, ThemeContainer } from './style';
+
+import { Label, Option, Select, ThemeContainer } from './styled';
 
 export const SwitchThemes: React.FC = () => {
   const { theme, toggleTheme } = useTheme();

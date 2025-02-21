@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { StyledAddButton, StyledDeleteButton } from './style';
+import { StyledButton } from './styled';
+
 interface ButtonProps {
   content: string;
   variant?: 'add' | 'delete';
@@ -9,7 +10,20 @@ interface ButtonProps {
 
 export const Button: FC<ButtonProps> = ({ content, variant, onClick }) => {
   if (variant === 'add') {
-    return <StyledAddButton onClick={onClick}>{content}</StyledAddButton>;
+    return (
+      <StyledButton variant="add" onClick={onClick}>
+        {content}
+      </StyledButton>
+    );
   }
-  return <StyledDeleteButton onClick={onClick}>{content}</StyledDeleteButton>;
+
+  if (variant === 'delete') {
+    return (
+      <StyledButton variant="delete" onClick={onClick}>
+        {content}
+      </StyledButton>
+    );
+  }
+
+  return null;
 };
