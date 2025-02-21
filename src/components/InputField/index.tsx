@@ -9,9 +9,9 @@ interface InputFieldProps {
 
 export const InputField: FC<InputFieldProps> = ({ inputValue, onChange }) => {
   return (
-    <div>
+    <>
       <StyledLabel>Add a new task</StyledLabel>
       <StyledInput type="text" value={inputValue} onChange={onChange} />
-    </div>
+    </>
   );
 };

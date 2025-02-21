@@ -15,7 +15,7 @@ export const GitCard: FC<GitCardProps> = ({ login }) => {
           <p>
             <strong>Login:</strong> {login}
           </p>
-          <Avatar src={gitHub} alt="GitHub Avatar"></Avatar>
+          <Avatar src={gitHub} alt="GitHub Avatar" />
         </AvatarContainer>
       </Card>
     </CardWrapper>

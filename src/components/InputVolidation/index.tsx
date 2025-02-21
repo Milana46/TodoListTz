@@ -1,7 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { InputField } from '@/components/InputField';
-
-import { ErrorMessage, InputContainer } from '../../pages/Home/styled';
+import { ErrorMessage, InputContainer } from '@/pages/Home/styled';
 
 interface InputVolidationProps {
   inputValue: string;
@@ -9,7 +8,7 @@ interface InputVolidationProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const InputVolidation: React.FC<InputVolidationProps> = ({
+export const InputVolidation: FC<InputVolidationProps> = ({
   inputValue,
   hasExceededLimit,
   onChange,
