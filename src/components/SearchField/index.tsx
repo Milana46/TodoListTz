@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
 import { Input, InputWrapper, Label, SearchButton, SearchContainer } from './styled';
 
@@ -8,6 +8,10 @@ interface SearchFieldProps {
 
 export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
 
   const handleSearch = () => {
     if (query.trim()) {
@@ -19,17 +23,8 @@ export const SearchField: FC<SearchFieldProps> = ({ onSearch }) => {
     <SearchContainer>
       <Label>GitHub info</Label>
       <InputWrapper>
-        <Input
-          type="text"
-          placeholder="Search name..."
-          value={query}
-          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
-            setQuery(e.target.value)
-          }
-        />
-        <SearchButton onClick={handleSearch}>
-          <button>Search</button>
-        </SearchButton>
+        <Input type="text" placeholder="Search name..." value={query} onChange={handleChange} />
+        <SearchButton onClick={handleSearch}>Search</SearchButton>
       </InputWrapper>
     </SearchContainer>
   );

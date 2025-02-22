@@ -1,5 +1,5 @@
-import React, { createContext, FC,ReactNode, useContext, useState } from 'react';
-import { darkTheme,lightTheme } from '@/styles/stylesForThheme';
+import React, { createContext, FC, ReactNode, useContext, useState } from 'react';
+import { darkTheme, lightTheme } from '@/styles/stylesForThheme';
 import { baseTheme } from '@/styles/theme';
 
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';

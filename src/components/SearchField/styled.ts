@@ -61,8 +61,8 @@ export const Input = styled.input`
 
 export const SearchButton = styled.button`
   ${({ theme }) => css`
-    background: none;
-    border: none;
+    background: white;
+    color: ${theme.colors.secondary};
     cursor: pointer;
     font-size: ${theme.fontSize.s};
     margin-left: ${theme.margins.xss};
