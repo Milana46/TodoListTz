@@ -1,18 +1,35 @@
-import React, { useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { fetchURL } from '@/api/index';
+import { GitCard } from '@/components/GitCard';
+import { SearchField } from '@/components/SearchField';
+import { SwitchThemes } from '@/components/SwitchThemes';
+import { useTheme } from '@/hooks/useTheme';
 
-import { GitCard } from '../components/GitCard';
-import { SearchField } from '../components/SearchField';
-import { SwitchThemes } from '../components/SwitchThemes';
+export const Settings: FC = () => {
+  const { theme } = useTheme();
+  const [userData, setUserData] = useState<{ login: string; avatar_url: string } | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-export const Settings: React.FC = () => {
-  const [theme, setTheme] = useState('light');
-  const [, setQuery] = useState('');
+  useEffect(() => {
+    const savedUserData = localStorage.getItem('userData');
+    if (savedUserData) {
+      setUserData(JSON.parse(savedUserData));
+    }
+  }, []);
+
+  const handleSearch = (userName: string) => {
+    fetchURL(userName, setUserData, setError);
+  };
 
   return (
-    <>
-      <SwitchThemes theme={theme} onChangeTheme={setTheme} />
-      <SearchField onSearch={(searchValue) => setQuery(searchValue)} />
-      <GitCard login={'IvanovIvan'}></GitCard>
-    </>
+    <div style={{ backgroundColor: theme.bgColor, color: theme.textColor }}>
+      <SwitchThemes />
+      <SearchField onSearch={handleSearch} />
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        userData && <GitCard login={userData.login} userUrl={userData.avatar_url} />
+      )}
+    </div>
   );
 };

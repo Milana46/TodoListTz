@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import gitHub from '@/assets/images/gitHub.png';
 
 import { Avatar, AvatarContainer, Card, CardWrapper } from './styled';
 
 interface GitCardProps {
   login: string;
+  userUrl: string;
 }
 
-export const GitCard: FC<GitCardProps> = ({ login }) => {
+export const GitCard: FC<GitCardProps> = ({ login, userUrl }) => {
   return (
     <CardWrapper>
       <Card>
@@ -15,7 +15,7 @@ export const GitCard: FC<GitCardProps> = ({ login }) => {
           <p>
             <strong>Login:</strong> {login}
           </p>
-          <Avatar src={gitHub} alt="GitHub Avatar" />
+          <Avatar src={userUrl} alt="GitHub Avatar" />
         </AvatarContainer>
       </Card>
     </CardWrapper>

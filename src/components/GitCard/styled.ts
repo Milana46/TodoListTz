@@ -5,7 +5,6 @@ const AVATAR_SIZE_SMALL = '150px';
 export const Card = styled.div`
   ${({ theme }) => css`
     display: flex;
-    border: ${theme.border.xxs} solid ${theme.colors.primary};
     padding: ${theme.margins.s};
     margin-top: ${theme.margins.s};
     text-align: center;

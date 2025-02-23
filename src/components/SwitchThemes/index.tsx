@@ -1,21 +1,23 @@
 import React, { ChangeEvent, FC } from 'react';
+import { lightTheme } from '@/styles/stylesForThheme';
 
+import { useTheme } from '../../hooks/useTheme';
 import { Label, Option, Select, ThemeContainer } from './styled';
 
-interface SwitchThemesProps {
-  theme: string;
-  onChangeTheme: (newTheme: string) => void;
-}
+export const SwitchThemes: FC = () => {
+  const { theme, toggleTheme } = useTheme();
 
-const handleThemeChange =
-  (onChangeTheme: (newTheme: string) => void) => (event: ChangeEvent<HTMLSelectElement>) =>
-    onChangeTheme(event.target.value);
+  const themeValue = theme === lightTheme ? 'light' : 'dark';
 
-export const SwitchThemes: FC<SwitchThemesProps> = ({ theme, onChangeTheme }) => {
+  const handleThemeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const selectedTheme = event.target.value as 'light' | 'dark';
+    toggleTheme(selectedTheme);
+  };
+
   return (
     <ThemeContainer>
       <Label>Switch Theme</Label>
-      <Select value={theme} onChange={handleThemeChange(onChangeTheme)}>
+      <Select value={themeValue} onChange={handleThemeChange}>
         <Option value="light">Light theme</Option>
         <Option value="dark">Dark theme</Option>
       </Select>

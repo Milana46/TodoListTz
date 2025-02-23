@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
@@ -9,7 +9,7 @@ import { ROUTERS } from '../constants/constantsRouter';
 import { Navigation } from './../components/Navigation';
 import { baseTheme } from './../styles/theme';
 
-const renderWithTheme = (ui: React.ReactElement) => {
+const renderWithTheme = (ui: ReactElement) => {
   return render(
     <ThemeProvider theme={baseTheme}>
       <BrowserRouter>{ui}</BrowserRouter>
