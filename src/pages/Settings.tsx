@@ -1,8 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
+import { fetchURL } from '@/api/index';
 import { GitCard } from '@/components/GitCard';
 import { SearchField } from '@/components/SearchField';
 import { SwitchThemes } from '@/components/SwitchThemes';
-import { useTheme } from '@/context/themeContext';
+import { useTheme } from '@/hooks/useTheme';
 
 export const Settings: FC = () => {
   const { theme } = useTheme();
@@ -16,26 +17,14 @@ export const Settings: FC = () => {
     }
   }, []);
 
-  const fetchURL = async (userName: string) => {
-    try {
-      const response = await fetch(`https://api.github.com/users/${userName}`);
-      if (!response.ok) {
-        throw new Error('User is not found!');
-      }
-      const data = await response.json();
-      const user = { login: data.login, avatar_url: data.avatar_url };
-
-      localStorage.setItem('userData', JSON.stringify(user));
-      setUserData(user);
-    } catch {
-      setError('User is not found!');
-    }
+  const handleSearch = (userName: string) => {
+    fetchURL(userName, setUserData, setError);
   };
 
   return (
-    <div className={theme}>
+    <div style={{ backgroundColor: theme.bgColor, color: theme.textColor }}>
       <SwitchThemes />
-      <SearchField onSearch={fetchURL} />
+      <SearchField onSearch={handleSearch} />
       {error ? (
         <p>{error}</p>
       ) : (

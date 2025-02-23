@@ -12,22 +12,20 @@ type RouteKey = keyof typeof ROUTERS;
 
 export function App() {
   return (
-    <>
+    <ThemeProvider>
       <GlobalStyle />
-      <ThemeProvider>
-        <ErrorBoundary>
-          <Router>
-            <Navigation />
-            <Routes>{listOfRoutes}</Routes>
-          </Router>
-        </ErrorBoundary>
-      </ThemeProvider>
-    </>
+      <ErrorBoundary>
+        <Router>
+          <Navigation />
+          <Routes>
+            {Object.entries(ROUTERS).map(([key, path]) => (
+              <Route key={key} path={path} element={getComponentByKey(key as RouteKey)} />
+            ))}
+          </Routes>
+        </Router>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
-
-const listOfRoutes = Object.entries(ROUTERS).map(([key, path]) => (
-  <Route key={key} path={path} element={getComponentByKey(key as RouteKey)} />
-));
 
 export default App;
